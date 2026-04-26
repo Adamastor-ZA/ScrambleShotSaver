@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayrshire Shot Saver</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1a3a2a;--green-mid:#2a5240;--green-light:#3d7a5e;
+  --gold:#c9a84c;--gold-l:#e8c97a;--cream:#f5f0e8;--cream-d:#e8e0d0;
+  --text:#1a1a1a;--text-m:#444;--div:rgba(201,168,76,.25);
+  --shot1:#217a3e;--shot2:#8a6b10;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--text);font-family:'Source Sans 3',sans-serif;font-weight:300;line-height:1.6}
+
+/* COVER */
+.cover{background:var(--green);color:var(--cream);padding:52px 32px 44px;text-align:center;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,.015) 40px,rgba(255,255,255,.015) 41px)}
+.eyebrow{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.cover h1{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,48px);font-weight:400;line-height:1.15;margin-bottom:10px}
+.cover-sub{font-size:13px;letter-spacing:1px;color:var(--gold-l);opacity:.75;margin-bottom:26px;font-style:italic}
+.cover-tags{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.cover-tag{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);border:1px solid var(--gold);padding:5px 12px;border-radius:2px;opacity:.8}
+
+/* HANDICAP BAR */
+.hcp-bar{position:sticky;top:0;z-index:100;background:var(--green);border-bottom:2px solid var(--gold);padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(0,0,0,.35)}
+.hcp-label{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+.hcp-input-wrap{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid var(--gold);border-radius:3px;padding:4px 10px}
+#hcpInput{background:transparent;border:none;outline:none;color:var(--cream);font-family:'Playfair Display',serif;font-size:18px;width:64px;text-align:center}
+#hcpInput::placeholder{color:rgba(245,240,232,.3)}
+.hcp-chips{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
+.ch-chip{background:rgba(255,255,255,.07);border:1px solid var(--div);border-radius:3px;padding:4px 12px;text-align:center;min-width:76px}
+.ch-chip-label{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;display:block}
+.ch-chip-val{font-family:'Playfair Display',serif;font-size:16px;color:var(--cream);display:block;line-height:1.2}
+
+/* COURSE HEADER */
+.course-hdr{background:var(--green);color:var(--cream);padding:24px 20px 18px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.ch-left{flex:1;min-width:180px}
+.ch-num{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:3px}
+.ch-name{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,28px);font-weight:400;line-height:1.2}
+.ch-sub{font-size:12px;color:var(--gold-l);opacity:.72;font-style:italic;margin-top:2px}
+.ch-stats{display:flex;gap:18px;align-items:center}
+.st-blk{text-align:center}
+.st-val{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);display:block}
+.st-lbl{font-size:9px;letter-spacing:1.5px;color:var(--cream);opacity:.5;text-transform:uppercase}
+.course-note{background:var(--green-mid);border-left:3px solid var(--gold);padding:10px 18px;font-size:12.5px;color:var(--cream);font-style:italic;opacity:.88}
+
+/* NINE LABEL */
+.nine-lbl{background:var(--cream-d);padding:7px 16px;font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:3px;color:var(--green);text-transform:uppercase;border-bottom:1px solid var(--div)}
+
+/* HOLE CARD */
+.hole-card{display:grid;grid-template-columns:32px 58px 1fr;border-bottom:1px solid var(--div);min-height:82px;transition:background .2s}
+.hole-card.shot1{background:rgba(33,122,62,.07)}
+.hole-card.shot2{background:rgba(138,107,16,.09)}
+.hc-num{background:var(--green);color:var(--gold);font-family:'Playfair Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center}
+.hc-svg{padding:6px 4px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--div)}
+.hc-body{padding:9px 12px}
+.hc-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:3px}
+.meta-par{background:var(--green);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;letter-spacing:.5px}
+.meta-yds{font-family:'Courier Prime',monospace;font-size:10px;color:var(--text-m);letter-spacing:.5px}
+.meta-si{font-family:'Courier Prime',monospace;font-size:10px;color:var(--text-m);opacity:.7;letter-spacing:.5px}
+.meta-shots{font-family:'Courier Prime',monospace;font-size:10px;font-weight:700;padding:2px 7px;border-radius:12px;letter-spacing:.5px;transition:all .3s}
+.shots-0{background:rgba(0,0,0,.06);color:#888}
+.shots-1{background:var(--shot1);color:#fff}
+.shots-2{background:var(--shot2);color:#fff}
+.hc-name{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--green);margin-bottom:3px;line-height:1.3}
+.hc-tip{font-size:12px;color:var(--text-m);line-height:1.55}
+.hc-tip b,.hc-tip strong{color:var(--green);font-weight:600}
+.warn{color:#8b1a1a;font-weight:600}
+.birdie{color:#1a5c2e;font-weight:600}
+
+.course-divider{height:10px;background:var(--gold);opacity:.12}
+
+footer{background:var(--green);color:var(--cream);text-align:center;padding:22px;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:2px;opacity:.88}
+
+/* SI note */
+.si-note{font-size:11px;color:var(--text-m);opacity:.65;font-style:italic;padding:6px 16px 6px 20px;background:rgba(0,0,0,.03);border-top:1px solid var(--div)}
+
+@media(max-width:480px){
+  .hole-card{grid-template-columns:28px 50px 1fr}
+  .hcp-chips{display:none}
+  .hcp-bar{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="eyebrow">Ayrshire Coast · Shot Saver</div>
+  <h1>The Ayrshire<br>Trilogy</h1>
+  <div class="cover-sub">Hole-by-hole strategic guide with handicap allocation</div>
+  <div class="cover-tags">
+    <span class="cover-tag">Prestwick GC</span>
+    <span class="cover-tag">Western Gailes</span>
+    <span class="cover-tag">Turnberry Ailsa</span>
+  </div>
+</div>
+
+<div class="hcp-bar" id="hcpBar">
+  <span class="hcp-label">Handicap<br>Index</span>
+  <div class="hcp-input-wrap">
+    <input type="number" id="hcpInput" placeholder="0.0" step="0.1" min="0" max="54" inputmode="decimal">
+  </div>
+  <div class="hcp-chips">
+    <div class="ch-chip"><span class="ch-chip-label">Prestwick</span><span class="ch-chip-val" id="ch-prestwick">—</span></div>
+    <div class="ch-chip"><span class="ch-chip-label">W. Gailes</span><span class="ch-chip-val" id="ch-western">—</span></div>
+    <div class="ch-chip"><span class="ch-chip-label">Turnberry</span><span class="ch-chip-val" id="ch-turnberry">—</span></div>
+  </div>
+</div>
+
+<div id="courses-container"></div>
+
+<footer>Ayrshire Shot Saver · Prestwick · Western Gailes · Turnberry Ailsa<br>SI values are indicative — verify against club scorecard</footer>
+
+<script>
+// ─── SHAPE DEFINITIONS ──────────────────────────────────────────────────────
+// viewBox "0 0 56 78". Tee at bottom (y≈68), green at top.
+const SH = {
+  'S':   {d:'M21,68 L35,68 L33,13 L23,13 Z', gx:28, gy:9},
+  'SR':  {d:'M21,68 L35,68 L38,13 L28,13 Z', gx:33, gy:9},
+  'SL':  {d:'M21,68 L35,68 L28,13 L18,13 Z', gx:23, gy:9},
+  'DR':  {d:'M21,68 L21,41 L33,41 L33,13 L45,13 L45,43 L31,43 L31,68 Z', gx:39, gy:9},
+  'DL':  {d:'M21,68 L21,41 L9,41 L9,13 L21,13 L21,43 L33,43 L33,68 Z',   gx:15, gy:9},
+  'SHR': {d:'M21,68 L21,47 L35,47 L35,13 L47,13 L47,49 L33,49 L33,68 Z', gx:41, gy:9},
+  'SHL': {d:'M21,68 L21,47 L7,47 L7,13 L19,13 L19,49 L33,49 L33,68 Z',   gx:13, gy:9},
+  'P3':  {d:'M16,68 L40,68 L34,13 L22,13 Z', gx:28, gy:9, big:1},
+  'BL':  {d:'M21,68 L35,68 L33,13 L23,13 Z', gx:28, gy:9, blind:1},
+};
+
+function makeSVG(hole) {
+  const sh = SH[hole.shape] || SH['S'];
+  const {gx, gy} = sh;
+  const grx = sh.big ? 11 : 9, gry = sh.big ? 6 : 5;
+  let h = '';
+  // Rough bg
+  h += `<rect width="56" height="78" fill="#16341f"/>`;
+  // Fairway
+  h += `<path d="${sh.d}" fill="#3a6e48" opacity=".95"/>`;
+  // Blind indicator
+  if (sh.blind) h += `<line x1="12" y1="36" x2="44" y2="36" stroke="#c9a84c" stroke-width="1.3" stroke-dasharray="2.5,2" opacity=".8"/>
+    <text x="28" y="33" text-anchor="middle" font-size="6" fill="#c9a84c" font-family="monospace">▲▲</text>`;
+  // Hazards
+  for (const hz of hole.haz||[]) {
+    if (hz.t==='B')   h += `<ellipse cx="${hz.x}" cy="${hz.y}" rx="${hz.rx||4}" ry="${hz.ry||3}" fill="#c4aa3a" opacity=".88"/>`;
+    if (hz.t==='OOB') { const lx=hz.s==='R'?52:4; h += `<line x1="${lx}" y1="8" x2="${lx}" y2="70" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="3,2.5" opacity=".8"/>`; }
+    if (hz.t==='W')   h += `<rect x="${hz.x||10}" y="${hz.y||25}" width="${hz.w||36}" height="${hz.h||4}" rx="2" fill="#3a82b5" opacity=".78"/>`;
+    if (hz.t==='WV')  h += `<ellipse cx="${hz.x||28}" cy="${hz.y||35}" rx="${hz.rx||7}" ry="${hz.ry||4}" fill="#3a82b5" opacity=".78"/>`;
+  }
+  // Tee box
+  h += `<rect x="22" y="67" width="12" height="8" rx="1.5" fill="#0e2216" stroke="#1e3d25" stroke-width=".5"/>`;
+  // Green
+  h += `<ellipse cx="${gx}" cy="${gy+5}" rx="${grx}" ry="${gry}" fill="#267040" stroke="#1a5530" stroke-width=".8"/>`;
+  // Flag
+  h += `<line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy+9}" stroke="#1a3a24" stroke-width=".9"/>`;
+  h += `<polygon points="${gx},${gy} ${gx+6},${gy+2.5} ${gx},${gy+5}" fill="#c9a84c"/>`;
+  return `<svg viewBox="0 0 56 78" width="50" height="70" xmlns="http://www.w3.org/2000/svg">${h}</svg>`;
+}
+
+// ─── COURSE DATA ─────────────────────────────────────────────────────────────
+// haz: t=B(bunker) x,y,rx?,ry? | t=OOB s=L/R | t=W(water/burn) x,y,w?,h? | t=WV(water vertical/pond) x,y,rx?,ry?
+// shape: S|SR|SL|DR|DL|SHR|SHL|P3|BL
+
+const COURSES = [
+{
+  id:'prestwick', chipId:'ch-prestwick',
+  name:'Prestwick Golf Club',
+  sub:'Birthplace of The Open Championship, 1860',
+  par:71, cr:73.0, slope:135,
+  note:'Prestwick punishes the unfamiliar. Blind shots, shared fairways, pot bunkers. First-timer rule: always aim at the disc/marker, always ring the bell, and treat bogey on holes 7–10 as a win.',
+  holes:[
+    {num:1,  name:'Railway',          par:4, yds:345, si:11, shape:'SR',
+     haz:[{t:'OOB',s:'R'},{t:'B',x:20,y:50,rx:3,ry:2.5}],
+     tip:'<b>OOB wall runs the entire right side, tee to green.</b> Play left-centre off the tee. ~200 yds leaves a short iron. Favour the right half of the fairway for the best angle in.'},
+    {num:2,  name:'Tunnel',           par:3, yds:164, si:15, shape:'P3',
+     haz:[{t:'B',x:16,y:20,rx:4,ry:3},{t:'B',x:40,y:20,rx:4,ry:3},{t:'B',x:28,y:25,rx:5,ry:3}],
+     tip:'Elevated tee plays one club shorter than the yardage. <b>Aim dead centre of the green</b> — four deep bunkers guard all quadrants. Par is a fine result.'},
+    {num:3,  name:'Cardinal',         par:5, yds:477, si:5,  shape:'DR',
+     haz:[{t:'B',x:16,y:54,rx:5,ry:3.5},{t:'B',x:44,y:24,rx:7,ry:4},{t:'OOB',s:'R'}],
+     tip:'<b>Lay up short of Cardinal Bunker at 230 yds.</b> Favour right of centre off the tee to open the dogleg. Third shot over the vast bunker to ~100 yds. <span class="warn">Pow Burn = OOB full right length.</span> <span class="birdie">Best birdie chance on the front nine.</span>'},
+    {num:4,  name:'Bridge',           par:4, yds:382, si:9,  shape:'SR',
+     haz:[{t:'B',x:14,y:45,rx:3,ry:2.5},{t:'B',x:38,y:32,rx:3,ry:2.5},{t:'OOB',s:'R'}],
+     tip:'Fairway slopes left toward the Pow Burn (<span class="warn">OOB</span>). Tee right — it shortens the hole and opens the approach. Green slopes left to right; allow for it on the approach.'},
+    {num:5,  name:'Himalayas',        par:3, yds:206, si:17, shape:'BL',
+     haz:[{t:'B',x:14,y:22,rx:4,ry:3},{t:'B',x:20,y:28,rx:4,ry:3},{t:'B',x:28,y:30,rx:5,ry:3}],
+     tip:'<b>Completely blind par 3.</b> Aim at the disc on the hill matching your tee. Take one extra club — prevailing wind pushes everything toward the five left bunkers. Green slopes back-to-front: leaving it short gives an uphill putt. <span class="warn">Ring the bell when done.</span>'},
+    {num:6,  name:'Elysian Fields',   par:4, yds:362, si:13, shape:'SL',
+     haz:[{t:'B',x:36,y:42,rx:3.5,ry:2.5},{t:'B',x:16,y:22,rx:5,ry:3}],
+     tip:'Start of the best stretch. Tee left-centre to open the ideal approach angle. <b>Anything short or left kicks into a deep left bunker</b> — take enough club to fly it onto the putting surface. <span class="birdie">Birdie chance if you execute.</span>'},
+    {num:7,  name:'Monkton Miln',     par:4, yds:430, si:3,  shape:'S',
+     haz:[{t:'B',x:37,y:50,rx:4,ry:3},{t:'B',x:38,y:44,rx:3,ry:2.5},{t:'B',x:22,y:30,rx:3.5,ry:3},{t:'B',x:22,y:24,rx:3.5,ry:3}],
+     tip:'Draw the tee shot to avoid three hidden right-side bunkers. The approach is uphill over two more hidden bunkers — <b>add a full club.</b> Par here is a trophy.'},
+    {num:8,  name:'End',              par:4, yds:432, si:7,  shape:'S',
+     haz:[{t:'B',x:38,y:50,rx:4,ry:3},{t:'B',x:15,y:35,rx:3.5,ry:2.5}],
+     tip:'Furthest point from the clubhouse. Tee right, carry <b>225 yds</b> to clear the last bunker. <b>The approach always looks shorter than it is — trust the yardage.</b> Leave it below the hole for an uphill birdie putt.'},
+    {num:9,  name:'Eglinton',         par:4, yds:444, si:1,  shape:'SR',
+     haz:[{t:'B',x:14,y:48,rx:3.5,ry:2.5},{t:'B',x:14,y:40,rx:3.5,ry:2.5},{t:'B',x:38,y:25,rx:4,ry:3}],
+     tip:'Semi-blind approach of 200+ yds; green slopes left to right. <b>Aim marginally left of the marker pole</b> with your second. Budget a bogey and move on.'},
+    {num:10, name:'Arran',            par:4, yds:453, si:2,  shape:'S',
+     haz:[{t:'B',x:37,y:52,rx:3.5,ry:2.5},{t:'B',x:37,y:45,rx:3.5,ry:2.5},{t:'B',x:37,y:38,rx:3.5,ry:2.5},{t:'B',x:16,y:28,rx:4,ry:3}],
+     tip:'Miss the first three right-side fairway bunkers off the tee. Uphill approach: <b>take a full club more.</b> The second bunker cluster has magnetic attraction for mishits.'},
+    {num:11, name:'Carrick',          par:3, yds:195, si:16, shape:'P3',
+     haz:[{t:'B',x:14,y:20,rx:4,ry:3},{t:'B',x:16,y:26,rx:4,ry:3},{t:'B',x:40,y:22,rx:4,ry:3},{t:'B',x:38,y:28,rx:3.5,ry:2.5}],
+     tip:'Prevailing wind pushes right to left — <b>allow for it, aim right.</b> Four bunkers left, two hidden right. Green slopes right to left. Centre of green is your safest target.'},
+    {num:12, name:'Wall',             par:5, yds:513, si:6,  shape:'S',
+     haz:[{t:'B',x:37,y:55,rx:3.5,ry:2.5},{t:'B',x:16,y:45,rx:3,ry:2.5},{t:'B',x:16,y:35,rx:3,ry:2.5}],
+     tip:'Narrow tee shot; fairway slopes right to left into bunkers. Lay up sensibly, play a controlled iron third. <span class="birdie">Best birdie chance on the back nine — don\'t waste it with a reckless tee shot.</span>'},
+    {num:13, name:'Sea Headrig',      par:4, yds:460, si:10, shape:'S',
+     haz:[{t:'B',x:38,y:42,rx:3.5,ry:2.5},{t:'B',x:15,y:28,rx:3.5,ry:2.5}],
+     tip:'Generous landing area off the tee. Mid-to-short iron to a well-protected but <b>relatively flat green</b> once you\'re on it. Bank the two-putt par.'},
+    {num:14, name:'Goosedubs',        par:4, yds:365, si:14, shape:'S',
+     haz:[{t:'B',x:15,y:40,rx:3,ry:2.5},{t:'B',x:38,y:30,rx:3,ry:2.5}],
+     tip:'Generous landing area. <span class="birdie">Another birdie opportunity — take it.</span> Good chance to claw back a shot lost on the tough stretch before.'},
+    {num:15, name:'Narrows',          par:4, yds:347, si:4,  shape:'SL',
+     haz:[{t:'B',x:20,y:44,rx:3.5,ry:3},{t:'B',x:15,y:36,rx:3.5,ry:3}],
+     tip:'Most demanding tee shot — carry <b>210 yds down the left side of the path.</b> <span class="warn">Willie Campbell\'s Grave bunker lurks left of fairway.</span> Undulating fairway means an uneven stance for your second. Precision over power.'},
+    {num:16, name:'Cardinal Return',  par:4, yds:288, si:18, shape:'SR',
+     haz:[{t:'B',x:26,y:28,rx:4,ry:3},{t:'B',x:36,y:25,rx:4,ry:3}],
+     tip:'<span class="birdie">Short and potentially driveable.</span> However, pot bunkers guard the approach — a safe layup and tidy pitch is the smarter play. Easy bogey if you get cavalier with the driver.'},
+    {num:17, name:'The Alps',         par:4, yds:385, si:8,  shape:'BL',
+     haz:[{t:'B',x:28,y:30,rx:8,ry:5}],
+     tip:'The oldest hole in major championship golf. <span class="warn">Blind second shot over the Alps — check the tee box indicator for pin position.</span> Sahara Bunker guards the front — falling short is catastrophic. Trust the yardage and fly it over. <span class="warn">Ring the bell.</span>'},
+    {num:18, name:'Station',          par:4, yds:291, si:12, shape:'SR',
+     haz:[{t:'B',x:18,y:35,rx:3.5,ry:3}],
+     tip:'<span class="birdie">A gift to close.</span> Aim at the clock on the clubhouse. Many can drive it — <b>but don\'t cut off too much of the ridge.</b> Generous green. A chance to finish with a score that flatters your card.'},
+  ]
+},
+{
+  id:'western', chipId:'ch-western',
+  name:'Western Gailes Golf Club',
+  sub:'Pure links between the sea and the railway since 1897',
+  par:71, cr:73.5, slope:138,
+  note:'Western Gailes rewards position over distance. The starter\'s advice is gospel: don\'t drive every tee. Holes 5–13 along the shore are the heart of the round. Burns kill you quietly; rough kills you loudly.',
+  holes:[
+    {num:1,  name:'—', par:4, yds:310, si:14, shape:'SR',
+     haz:[{t:'B',x:38,y:50,rx:3,ry:2.5},{t:'B',x:38,y:42,rx:3,ry:2.5}],
+     tip:'<span class="birdie">Easiest hole on the course — no driver needed.</span> Long iron or hybrid to the fairway leaves an easy pitch. Settle your nerves, bank the par or birdie, and move on.'},
+    {num:2,  name:'—', par:4, yds:375, si:10, shape:'S',
+     haz:[{t:'B',x:37,y:44,rx:3.5,ry:2.5},{t:'B',x:16,y:36,rx:3.5,ry:2.5}],
+     tip:'<b>Aim toward the railway line</b> off the tee — the hole turns parallel to it for the approach. Unusual routing but it opens up the green. Don\'t fight the line.'},
+    {num:3,  name:'—', par:4, yds:387, si:8,  shape:'SL',
+     haz:[{t:'B',x:14,y:52,rx:4,ry:3},{t:'B',x:14,y:44,rx:4,ry:3}],
+     tip:'<span class="warn">Two large bunkers dominate the left side of the fairway.</span> Aim right of centre off the tee. Don\'t cut the corner. A clean approach awaits if you find the fairway.'},
+    {num:4,  name:'—', par:4, yds:415, si:2,  shape:'S',
+     haz:[{t:'B',x:15,y:52,rx:3.5,ry:2.5},{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'B',x:20,y:24,rx:3.5,ry:2.5},{t:'B',x:26,y:22,rx:3.5,ry:2.5},{t:'B',x:34,y:22,rx:3.5,ry:2.5}],
+     tip:'A brute. <span class="warn">Bunkers both sides of fairway, three more just in front of the green.</span> <b>Take one extra club into the green</b> to carry the front bunkers. Bogey is perfectly acceptable.'},
+    {num:5,  name:'—', par:4, yds:490, si:4,  shape:'S',
+     haz:[{t:'B',x:15,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:42,rx:3.5,ry:2.5}],
+     tip:'Near par-5 length played as a 4. <b>Coastal stretch begins here.</b> Manage the tee shot, get to the fairway, and <b>accept bogey willingly.</b> Don\'t make a big number here.'},
+    {num:6,  name:'Lappock', par:5, yds:520, si:6, shape:'DR',
+     haz:[{t:'B',x:16,y:52,rx:3,ry:2.5},{t:'B',x:40,y:26,rx:3,ry:2.5},{t:'B',x:46,y:20,rx:3.5,ry:3}],
+     tip:'<span class="birdie">Best birdie chance on the front nine.</span> Dog-legs right then back left — the green hides in the dunes until the last moment. <b>Don\'t cut the corner on the tee.</b> Lay up, pitch on, make your putt.'},
+    {num:7,  name:'—', par:3, yds:190, si:16, shape:'P3',
+     haz:[{t:'B',x:16,y:22,rx:4,ry:3},{t:'B',x:40,y:22,rx:4,ry:3},{t:'B',x:28,y:27,rx:5,ry:3.5}],
+     tip:'Elevated tee — one of the finest par 3s in Scotland. <b>The green sits below in a natural amphitheatre.</b> Drop 1–2 clubs for the elevation. Don\'t hunt a difficult pin; centre of green is perfectly fine.'},
+    {num:8,  name:'—', par:4, yds:393, si:12, shape:'DR',
+     haz:[{t:'B',x:16,y:54,rx:3.5,ry:2.5},{t:'B',x:42,y:28,rx:3,ry:2.5},{t:'B',x:42,y:22,rx:3,ry:2.5}],
+     tip:'The tee shot looks tighter than it is — <b>trust the width of the landing area.</b> Hole turns right to follow the coast. Sea is now on your right all the way through to hole 13.'},
+    {num:9,  name:'—', par:4, yds:336, si:18, shape:'SR',
+     haz:[{t:'B',x:38,y:46,rx:3,ry:2.5},{t:'B',x:16,y:36,rx:3,ry:2.5}],
+     tip:'<span class="birdie">Shorter hole — a real birdie opportunity before the turn.</span> Coastal breeze in play; factor the wind direction carefully. A solid tee shot and a wedge.'},
+    {num:10, name:'—', par:4, yds:349, si:9,  shape:'SL',
+     haz:[{t:'B',x:38,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:40,rx:3.5,ry:2.5}],
+     tip:'Wind direction flips as you head south. <span class="birdie">Good birdie opportunity early on the back nine.</span> Use the new wind angle to your advantage. Sea remains on your right.'},
+    {num:11, name:'—', par:4, yds:477, si:3,  shape:'S',
+     haz:[{t:'B',x:15,y:50,rx:3.5,ry:2.5},{t:'B',x:37,y:44,rx:3.5,ry:2.5}],
+     tip:'Long par 4 into or across the prevailing wind. <b>Fairway management is everything.</b> Play for position, not distance. Accept the bogey rather than making a big number by chasing.'},
+    {num:12, name:'—', par:4, yds:436, si:1,  shape:'SR',
+     haz:[{t:'B',x:20,y:22,rx:4,ry:3},{t:'B',x:36,y:22,rx:4,ry:3}],
+     tip:'<b>Tee shot plays diagonally — pick your risk level.</b> <span class="warn">Two pot bunkers guard front left and right of the green.</span> Rough behind is brutal. Play short and safe on the approach.'},
+    {num:13, name:'—', par:3, yds:170, si:17, shape:'P3',
+     haz:[{t:'B',x:16,y:22,rx:4,ry:3},{t:'B',x:40,y:22,rx:4,ry:3}],
+     tip:'Similar distance to the 7th but lower elevation. <b>Deep bunkers and sea breeze</b> make this trickier than it looks. Aim for the fat of the green. Last of the spectacular coastal holes.'},
+    {num:14, name:'—', par:5, yds:525, si:5,  shape:'S',
+     haz:[{t:'B',x:15,y:54,rx:3,ry:2.5},{t:'B',x:37,y:50,rx:3,ry:2.5},{t:'B',x:15,y:42,rx:3,ry:2.5},{t:'B',x:37,y:38,rx:3,ry:2.5},{t:'B',x:15,y:32,rx:3,ry:2.5},{t:'B',x:37,y:28,rx:3,ry:2.5}],
+     tip:'Chosen for <em>The 500 World\'s Greatest Golf Holes.</em> Often downwind. <span class="warn">Ten bunkers in play.</span> <b>Don\'t let the tailwind tempt you into hero shots.</b> Three sensible shots earns par. <span class="birdie">Birdie possible if you\'re swinging well.</span>'},
+    {num:15, name:'—', par:3, yds:160, si:15, shape:'P3',
+     haz:[{t:'B',x:16,y:20,rx:4,ry:3},{t:'B',x:40,y:20,rx:4,ry:3}],
+     tip:'Short but well-protected. Deep bunkers and sea breeze always in play. Aim centre-green. Par heading into the closing three is valuable.'},
+    {num:16, name:'—', par:4, yds:428, si:7,  shape:'S',
+     haz:[{t:'B',x:15,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'W',x:10,y:18,w:36,h:4}],
+     tip:'<span class="warn">Burn runs across in front of the green.</span> Two large fairway bunkers off the tee. <b>Don\'t be short on the approach.</b> This is where a good round can unravel — stay committed.'},
+    {num:17, name:'—', par:4, yds:443, si:11, shape:'SR',
+     haz:[{t:'B',x:37,y:50,rx:3,ry:2.5},{t:'B',x:37,y:44,rx:3,ry:2.5},{t:'OOB',s:'R'}],
+     tip:'Hardest hole according to members. <b>Aim for the left edge of the clubhouse</b> with the tee shot. <span class="warn">Fade or slice and you\'re on the railway tracks.</span> Semi-blind approach to a green ringed by dune mounds. Bogey and be happy.'},
+    {num:18, name:'—', par:4, yds:407, si:13, shape:'DL',
+     haz:[{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:40,rx:3.5,ry:2.5}],
+     tip:'Turns left back to the clubhouse; typically into the prevailing wind. <b>Tee right side to open up the approach.</b> A worthy, demanding finish — give it everything.'},
+  ]
+},
+{
+  id:'turnberry', chipId:'ch-turnberry',
+  name:'Turnberry — Ailsa',
+  sub:'Four Opens · The Duel in the Sun · 1977 – 1986 – 1994 – 2009',
+  par:70, cr:74.0, slope:137,
+  note:'Almost every green on the Ailsa slopes toward the sea — allow for this on every putt. Budget bogeys on holes 1–3 (into the prevailing SW wind). Holes 4–11 hug the coast. The 9th (lighthouse) and 10th (donut bunker) are the defining stretch.',
+  holes:[
+    {num:1,  name:'Ailsa Craig',    par:4, yds:354, si:11, shape:'DL',
+     haz:[{t:'B',x:14,y:52,rx:3.5,ry:3},{t:'B',x:14,y:44,rx:3,ry:2.5},{t:'B',x:14,y:37,rx:3,ry:2.5},{t:'B',x:14,y:30,rx:3,ry:2.5},{t:'B',x:35,y:42,rx:3,ry:2.5}],
+     tip:'<span class="warn">Most heavily bunkered hole on the course — four bunkers up the left, one at the dogleg elbow.</span> Play away from the left bunkers. Green is fairly flat but <b>putts break toward the sea</b> as on most Ailsa holes. Bogey into the wind is fine.'},
+    {num:2,  name:'Mak Siccar',    par:4, yds:428, si:5,  shape:'S',
+     haz:[{t:'B',x:16,y:50,rx:3.5,ry:2.5},{t:'B',x:37,y:50,rx:3.5,ry:2.5},{t:'B',x:16,y:22,rx:4,ry:3},{t:'B',x:37,y:22,rx:4,ry:3}],
+     tip:'"Make Sure." Bunkers and a steep slope punish anything pulled left. <b>Find the fairway first.</b> Long green with bunkers front left and right — approach from the right where possible.'},
+    {num:3,  name:'Blaw Wearie',   par:4, yds:489, si:1,  shape:'S',
+     haz:[{t:'B',x:15,y:50,rx:4,ry:3},{t:'B',x:15,y:44,rx:4,ry:3},{t:'B',x:37,y:22,rx:4,ry:3},{t:'B',x:37,y:28,rx:3.5,ry:2.5}],
+     tip:'"Out of Breath." Longest par 4, usually <b>into the prevailing wind.</b> <span class="warn">Two fairway bunkers left; rough right is severe.</span> <b>Par here is exceptional — bogey is a very good score.</b>'},
+    {num:4,  name:'Woe-Be-Tide',   par:3, yds:168, si:15, shape:'P3',
+     haz:[{t:'B',x:34,y:20,rx:5,ry:3.5}],
+     tip:'Wind usually helping. Bowl-shaped green but <b>putts still break seaward.</b> <span class="warn">Deep pot bunker short right — avoid at all costs.</span> Firth left, steep rough right. <b>Hit the green.</b>'},
+    {num:5,  name:'Fin Me Oot',    par:4, yds:479, si:3,  shape:'SHL',
+     haz:[{t:'B',x:37,y:54,rx:3.5,ry:2.5},{t:'B',x:16,y:24,rx:3.5,ry:3},{t:'B',x:22,y:21,rx:3.5,ry:3},{t:'B',x:14,y:28,rx:3.5,ry:3}],
+     tip:'"Find Me Out." Dramatic right-to-left dogleg — green partially hidden in the dunes. <b>Tee right for a clearer view on approach.</b> Five bunkers guard the green; it slopes back to front. <span class="birdie">One of the most beautiful holes in Scotland.</span>'},
+    {num:6,  name:'Tappie Toorie', par:3, yds:231, si:9,  shape:'P3',
+     haz:[{t:'B',x:37,y:16,rx:3.5,ry:2.5},{t:'B',x:22,y:20,rx:4,ry:3},{t:'B',x:16,y:24,rx:4,ry:3},{t:'B',x:14,y:30,rx:4,ry:3}],
+     tip:'"Hit the Top." One of the hardest holes on the course. Elevated green, steep front slope. <span class="warn">The worst pot bunker on the course sits at the bottom of that slope.</span> Wind usually helps. <b>Don\'t be short — aim middle or back of the green.</b>'},
+    {num:7,  name:'Roon The Ben',  par:5, yds:538, si:13, shape:'SHL',
+     haz:[{t:'B',x:37,y:54,rx:3.5,ry:2.5},{t:'B',x:7,y:42,rx:4,ry:3},{t:'B',x:14,y:24,rx:4,ry:3},{t:'B',x:14,y:18,rx:4,ry:3}],
+     tip:'"Round the Mountain." Sharp right-to-left dogleg. <b>Don\'t take the brave line over the dunes left</b> — play right side off the tee, then turn left on the third shot. Two deep bunkers right of green, rough valley left. <span class="birdie">Best birdie chance on the front nine.</span>'},
+    {num:8,  name:'Goat Fell',     par:4, yds:454, si:7,  shape:'S',
+     haz:[{t:'B',x:37,y:54,rx:3.5,ry:2.5},{t:'B',x:37,y:47,rx:3.5,ry:2.5},{t:'B',x:37,y:40,rx:3.5,ry:2.5},{t:'B',x:37,y:22,rx:4,ry:3},{t:'B',x:37,y:28,rx:3.5,ry:2.5}],
+     tip:'<span class="warn">Three right-side fairway bunkers; fairway slopes left to right</span> making it hard to hold. Two-tiered green: <b>identify your tier before selecting a club</b> — wrong level makes two-putting very difficult.'},
+    {num:9,  name:"Bruce's Castle",par:3, yds:160, si:17, shape:'P3',
+     haz:[{t:'B',x:16,y:20,rx:4,ry:3},{t:'B',x:34,y:16,rx:4,ry:3}],
+     tip:'The most famous short hole in Scotland. <b>Tee perched on a rocky headland, green at the base of the Turnberry Lighthouse.</b> Wind can make it a wedge or a mid-iron — assess carefully. <span class="warn">Left is rocks and sea; right is a sheer drop.</span> Aim right-centre and let the wind work. Take your time. Soak it in. <span class="warn">Ring the bell.</span>'},
+    {num:10, name:'Dinna Fouter',  par:5, yds:495, si:2,  shape:'DR',
+     haz:[{t:'OOB',s:'L'},{t:'B',x:37,y:50,rx:3.5,ry:2.5},{t:'B',x:30,y:36,rx:4,ry:3},{t:'B',x:34,y:34,rx:4,ry:3},{t:'B',x:43,y:22,rx:4,ry:3}],
+     tip:'"Don\'t Mess Around." Long par 5 sweeping along the cliff. <span class="warn">Sea immediately left off the tee.</span> <b>The famous donut bunker sits mid-fairway on the approach — play past it or lay well back.</b> Green slopes right. <span class="birdie">Your best scoring chance on the back nine.</span>'},
+    {num:11, name:'Maidens',       par:3, yds:175, si:16, shape:'P3',
+     haz:[{t:'B',x:18,y:22,rx:5,ry:3.5},{t:'B',x:38,y:22,rx:5,ry:3.5}],
+     tip:'Tee shot over the rocky shoreline to a green at the sea\'s edge. <span class="warn">Small inlets left swallow a pulled shot.</span> <b>Best play: right side of the green</b> — it slopes seaward on the left. Two large front bunkers; take enough club.'},
+    {num:12, name:'Monument',      par:4, yds:451, si:6,  shape:'S',
+     haz:[{t:'B',x:14,y:50,rx:3.5,ry:2.5},{t:'B',x:14,y:42,rx:3.5,ry:2.5},{t:'B',x:14,y:34,rx:3.5,ry:2.5}],
+     tip:'<span class="warn">Three bunkers on the left side of the fairway — but the best approach to the elevated green is from the left.</span> <b>Take one extra club for the elevation.</b> <span class="birdie">Attack this one — the best mid-round birdie chance.</span>'},
+    {num:13, name:'Tickly Tap',    par:4, yds:410, si:4,  shape:'SR',
+     haz:[{t:'B',x:14,y:50,rx:3.5,ry:2.5},{t:'B',x:14,y:43,rx:3.5,ry:2.5},{t:'B',x:14,y:36,rx:3.5,ry:2.5}],
+     tip:'Typically into the prevailing wind. Slight dogleg right with an elevated green. <b>Green is narrow front-to-back with a ridge through the middle</b> — know the pin position before committing to a club.'},
+    {num:14, name:'Risk-An-Hope',  par:4, yds:440, si:8,  shape:'SR',
+     haz:[{t:'B',x:16,y:42,rx:3.5,ry:2.5},{t:'B',x:38,y:36,rx:3.5,ry:2.5}],
+     tip:'Snakes uphill — <b>lighthouse and Arran as a backdrop.</b> Allow for the climb on the approach (one club minimum). This is where the round comes into focus — make a good swing and trust it.'},
+    {num:15, name:"Ca' Canny",     par:4, yds:430, si:10, shape:'S',
+     haz:[{t:'B',x:16,y:24,rx:5,ry:3.5},{t:'B',x:38,y:24,rx:5,ry:3.5}],
+     tip:'"Go Carefully." <b>Aim right side of the green</b> — like most Ailsa holes, it slopes seaward on the left. Two large front bunkers will grab anything weak.'},
+    {num:16, name:'Wee Burn',      par:4, yds:428, si:12, shape:'S',
+     haz:[{t:'B',x:16,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'W',x:10,y:18,w:36,h:4}],
+     tip:'<span class="warn">Burn runs across the front of the green.</span> <b>Do not leave the approach short.</b> Two large fairway bunkers off the tee. This is where a good round can unravel — stay composed.'},
+    {num:17, name:'Lang Whang',    par:5, yds:500, si:14, shape:'SR',
+     haz:[{t:'B',x:15,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:42,rx:3.5,ry:2.5},{t:'B',x:15,y:30,rx:3.5,ry:2.5}],
+     tip:'"Long Hit." The only par 5 on the back nine — your last real birdie chance. <b>Subtle contours obstruct every shot.</b> Three steady shots earns more than two heroic ones. <span class="birdie">Finish with a birdie here and you\'ll remember it forever.</span>'},
+    {num:18, name:'Duel in the Sun',par:4, yds:430, si:18, shape:'S',
+     haz:[{t:'OOB',s:'R'},{t:'B',x:15,y:46,rx:4,ry:3},{t:'B',x:15,y:38,rx:4,ry:3}],
+     tip:'Championship tee hard against the sea — the hole runs directly toward the famous hotel. <span class="warn">Gorse right; dunes block the landing zone view.</span> Find the fairway first. <span class="birdie">One of the great finishing holes in golf — enjoy every step of it.</span>'},
+  ]
+}
+];
+
+// ─── HANDICAP CALC ────────────────────────────────────────────────────────────
+function calcCH(hi, course) {
+  return Math.round(hi * course.slope / 113 + (course.cr - course.par));
+}
+function shotsOnHole(ch, si) {
+  if (si <= ch - 18) return 2;
+  if (si <= ch) return 1;
+  return 0;
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function renderHole(h, cid) {
+  const parClass = h.par===3?'p3':h.par===5?'p5':'p4';
+  return `
+  <div class="hole-card" id="${cid}-h${h.num}">
+    <div class="hc-num">${h.num}</div>
+    <div class="hc-svg">${makeSVG(h)}</div>
+    <div class="hc-body">
+      <div class="hc-meta">
+        <span class="meta-par">P${h.par}</span>
+        <span class="meta-yds">${h.yds}y</span>
+        <span class="meta-si">SI ${h.si}</span>
+        <span class="meta-shots shots-0" id="sh-${cid}-${h.num}">—</span>
+      </div>
+      ${h.name && h.name!=='—'?`<div class="hc-name">${h.name}</div>`:''}
+      <div class="hc-tip">${h.tip}</div>
+    </div>
+  </div>`;
+}
+
+function renderCourse(c) {
+  const front = c.holes.slice(0,9).map(h=>renderHole(h,c.id)).join('');
+  const back  = c.holes.slice(9).map(h=>renderHole(h,c.id)).join('');
+  return `
+  <div class="course-section">
+    <div class="course-hdr">
+      <div class="ch-left">
+        <div class="ch-num">Course ${COURSES.indexOf(c)+1} of 3</div>
+        <div class="ch-name">${c.name}</div>
+        <div class="ch-sub">${c.sub}</div>
+      </div>
+      <div class="ch-stats">
+        <div class="st-blk"><span class="st-val">${c.par}</span><span class="st-lbl">Par</span></div>
+        <div class="st-blk"><span class="st-val">${c.cr}</span><span class="st-lbl">Rating</span></div>
+        <div class="st-blk"><span class="st-val">${c.slope}</span><span class="st-lbl">Slope</span></div>
+        <div class="st-blk"><span class="st-val" id="ch-display-${c.id}">—</span><span class="st-lbl">Cse Hcp</span></div>
+      </div>
+    </div>
+    <div class="course-note">⚠ ${c.note}</div>
+    <div class="si-note">★ Stroke index values are indicative — verify against the club scorecard before play.</div>
+    <div class="nine-lbl">Front Nine · Holes 1–9</div>
+    ${front}
+    <div class="nine-lbl">Back Nine · Holes 10–18</div>
+    ${back}
+  </div>
+  <div class="course-divider"></div>`;
+}
+
+// ─── HANDICAP UPDATE ──────────────────────────────────────────────────────────
+function updateHCP() {
+  const raw = document.getElementById('hcpInput').value;
+  const hi  = parseFloat(raw);
+  const valid = !isNaN(hi) && hi >= 0 && hi <= 54;
+
+  for (const c of COURSES) {
+    const ch = valid ? calcCH(hi, c) : null;
+    // Chip in sticky bar
+    document.getElementById(c.chipId).textContent = ch !== null ? ch : '—';
+    // In-course display
+    const disp = document.getElementById(`ch-display-${c.id}`);
+    if (disp) disp.textContent = ch !== null ? ch : '—';
+    // Each hole
+    for (const h of c.holes) {
+      const shots = valid ? shotsOnHole(ch, h.si) : 0;
+      const shEl  = document.getElementById(`sh-${c.id}-${h.num}`);
+      const card  = document.getElementById(`${c.id}-h${h.num}`);
+      if (shEl) {
+        shEl.textContent = shots > 0 ? `+${shots}` : '—';
+        shEl.className = `meta-shots shots-${shots}`;
+      }
+      if (card) {
+        card.classList.remove('shot1','shot2');
+        if (shots === 1) card.classList.add('shot1');
+        if (shots >= 2) card.classList.add('shot2');
+      }
+    }
+  }
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('courses-container');
+  container.innerHTML = COURSES.map(renderCourse).join('');
+  const inp = document.getElementById('hcpInput');
+  inp.addEventListener('input', updateHCP);
+  inp.value = '14.2';
+  updateHCP();
+});
+</script>
+</body>
+</html>

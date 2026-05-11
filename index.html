@@ -171,41 +171,44 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 .print-view{padding:0;margin:0}
 .print-page{width:132mm;min-height:194mm;page-break-after:always;padding:0;display:flex;flex-direction:column;font-family:'Source Sans 3',sans-serif}
 .print-page:last-child{page-break-after:auto}
-.pp-header{border-bottom:1.5pt solid #1a3a2a;padding-bottom:2mm;margin-bottom:2mm;display:flex;justify-content:space-between;align-items:flex-end}
+.pp-header{border-bottom:1.2pt solid #1a3a2a;padding-bottom:1.5mm;margin-bottom:1.5mm;display:flex;justify-content:space-between;align-items:flex-end}
 .pp-header-l{flex:1}
-.pp-eyebrow{font-family:'Courier Prime',monospace;font-size:7pt;letter-spacing:1.5px;color:#c9a84c;text-transform:uppercase;margin-bottom:0.5mm}
-.pp-title{font-family:'Playfair Display',serif;font-size:14pt;font-weight:400;color:#1a3a2a;line-height:1.1;margin:0}
-.pp-subhead{font-size:7.5pt;color:#444;margin-top:0.5mm;font-style:italic}
-.pp-header-r{text-align:right;font-family:'Courier Prime',monospace;font-size:7pt;color:#444}
-.pp-header-r b{display:block;font-size:11pt;color:#1a3a2a;font-family:'Playfair Display',serif;font-weight:400}
-.pp-table{width:100%;border-collapse:collapse;font-size:7.5pt;flex:1;table-layout:fixed}
+.pp-eyebrow{font-family:'Courier Prime',monospace;font-size:6pt;letter-spacing:1.2px;color:#c9a84c;text-transform:uppercase;margin-bottom:0.3mm}
+.pp-title{font-family:'Playfair Display',serif;font-size:12pt;font-weight:400;color:#1a3a2a;line-height:1.05;margin:0}
+.pp-subhead{font-size:6.5pt;color:#444;margin-top:0.3mm;font-style:italic}
+.pp-header-r{text-align:right;font-family:'Courier Prime',monospace;font-size:6pt;color:#888;line-height:1.4}
+.pp-header-r b{display:inline-block;font-size:9pt;color:#1a3a2a;font-family:'Playfair Display',serif;font-weight:400;margin-left:2mm;min-width:7mm;text-align:right}
+.pp-header-r-row{white-space:nowrap}
+.pp-table{width:100%;border-collapse:collapse;font-size:6.5pt;flex:1;table-layout:fixed}
 .pp-table col.c-num{width:6mm}
-.pp-table col.c-svg{width:11mm}
-.pp-table col.c-par{width:7mm}
-.pp-table col.c-yds{width:11mm}
-.pp-table col.c-si{width:6mm}
+.pp-table col.c-svg{width:18mm}
+.pp-table col.c-par{width:5mm}
+.pp-table col.c-yds{width:9mm}
+.pp-table col.c-si{width:5mm}
 .pp-table col.c-body{width:auto}
-.pp-table col.c-score{width:10mm}
-.pp-table thead th{background:#1a3a2a;color:#e8c97a;font-family:'Courier Prime',monospace;font-size:6.5pt;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:1mm 1.5mm;text-align:left}
-.pp-table tbody td{padding:1mm 1.5mm;border-bottom:0.3pt solid #c4b990;vertical-align:top}
+.pp-table col.c-score{width:9mm}
+.pp-table thead th{background:#1a3a2a;color:#e8c97a;font-family:'Courier Prime',monospace;font-size:5.5pt;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:0.8mm 1.2mm;text-align:left}
+.pp-table tbody td{padding:0.8mm 1.2mm;border-bottom:0.25pt solid #c4b990;vertical-align:middle}
 .pp-table tbody tr:nth-child(even) td{background:rgba(38,112,64,.04)}
-.pp-table .pp-num{font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#1a3a2a;text-align:center;line-height:1}
-.pp-table .pp-name{font-family:'Playfair Display',serif;font-style:italic;font-size:7pt;color:#1a3a2a;display:block;line-height:1.1;margin-bottom:0.4mm}
-.pp-table .pp-cell-num{font-family:'Courier Prime',monospace;font-size:8pt;color:#1a3a2a;font-weight:700}
-.pp-svg{width:10mm;height:14mm;display:block}
-.pp-strat{font-family:'Courier Prime',monospace;font-size:6.5pt;color:#1a3a2a;letter-spacing:0.2px;line-height:1.25;margin-bottom:0.6mm}
-.pp-strat b{color:#5a4a08;font-weight:700;margin-right:1mm}
-.pp-strat .pp-strat-sep{color:#999;margin:0 1mm}
-.pp-tip{font-size:7pt;color:#333;font-style:italic;line-height:1.25}
+.pp-table .pp-num{font-family:'Playfair Display',serif;font-size:10pt;font-weight:700;color:#1a3a2a;text-align:center;line-height:1;vertical-align:middle}
+.pp-table .pp-name{font-family:'Playfair Display',serif;font-style:italic;font-size:6pt;color:#1a3a2a;display:block;line-height:1.05;margin-bottom:0.3mm}
+.pp-table .pp-cell-num{font-family:'Courier Prime',monospace;font-size:7pt;color:#1a3a2a;font-weight:700;vertical-align:middle}
+.pp-shapes{display:flex;gap:1mm;align-items:center;justify-content:center}
+.pp-svg-hole{width:7mm;height:auto;display:block}
+.pp-svg-green{width:9mm;height:auto;display:block}
+.pp-strat{font-family:'Courier Prime',monospace;font-size:5.5pt;color:#1a3a2a;letter-spacing:0.15px;line-height:1.2;margin-bottom:0.3mm}
+.pp-strat b{color:#5a4a08;font-weight:700;margin-right:0.6mm}
+.pp-strat .pp-strat-sep{color:#999;margin:0 0.6mm}
+.pp-tip{font-size:6pt;color:#333;font-style:italic;line-height:1.18}
 .pp-tip b{color:#1a3a2a;font-style:normal;font-weight:700}
-.pp-carries{font-family:'Courier Prime',monospace;font-size:6pt;color:#8b1a1a;margin-top:0.4mm;line-height:1.2}
+.pp-carries{font-family:'Courier Prime',monospace;font-size:5pt;color:#8b1a1a;margin-top:0.3mm;line-height:1.15}
 .pp-score-cell{border-left:0.5pt solid #999}
-.pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:7pt;font-weight:700;color:#1a3a2a;padding:1.2mm 1.5mm;text-transform:uppercase;letter-spacing:0.5px;border-top:1pt solid #1a3a2a;border-bottom:none}
-.pp-footer{margin-top:2mm;display:flex;justify-content:space-between;align-items:flex-end}
+.pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:6.5pt;font-weight:700;color:#1a3a2a;padding:1mm 1.2mm;text-transform:uppercase;letter-spacing:0.4px;border-top:1pt solid #1a3a2a;border-bottom:none}
+.pp-footer{margin-top:1.5mm;display:flex;justify-content:space-between;align-items:flex-end}
 .pp-notes{flex:1}
-.pp-notes-lbl{font-family:'Courier Prime',monospace;font-size:6.5pt;letter-spacing:1px;color:#666;text-transform:uppercase;margin-bottom:1mm}
-.pp-notes-line{border-bottom:0.4pt solid #999;height:4mm;margin-bottom:1.5mm}
-.pp-pagenum{font-family:'Courier Prime',monospace;font-size:6.5pt;color:#999;letter-spacing:1px;margin-left:6mm;white-space:nowrap}
+.pp-notes-lbl{font-family:'Courier Prime',monospace;font-size:5.5pt;letter-spacing:0.8px;color:#666;text-transform:uppercase;margin-bottom:0.7mm}
+.pp-notes-line{border-bottom:0.3pt solid #999;height:3mm;margin-bottom:1mm}
+.pp-pagenum{font-family:'Courier Prime',monospace;font-size:5.5pt;color:#999;letter-spacing:0.8px;margin-left:5mm;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -1411,31 +1414,36 @@ function updateWind(){
 
 // ─── PRINT VIEW (A5 notebook pages) ───────────────────────────────────────────
 function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) {
-  // Compute totals for this nine
   const totalYds = holes.reduce((a,h) => a + h.yds, 0);
   const totalPar = holes.reduce((a,h) => a + h.par, 0);
 
+  // Helper to extract inner contents of an <svg> for re-wrapping with print classes
+  const innerSVG = (svgStr) => {
+    const m = svgStr.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
+    return m ? m[1] : '';
+  };
+
   const rows = holes.map(h => {
-    // Strategy line (compact)
+    // Strategy line (compact, one line)
     const stratParts = [];
     if (h.tee && h.tee.club) {
       const line = h.tee.line ? ` ${fmtText(h.tee.line)}` : '';
       stratParts.push(`<b>T</b>${h.tee.club}${line}`);
     }
     if (h.approach && h.approach.club) {
-      const notes = h.approach.notes ? ` <span style="color:#666">${fmtText(h.approach.notes)}</span>` : '';
+      const notes = h.approach.notes ? ` ${fmtText(h.approach.notes)}` : '';
       stratParts.push(`<b>In</b>${h.approach.club}${notes}`);
     }
     if (h.miss) stratParts.push(`<b>Miss</b>${h.miss}`);
     const stratLine = stratParts.join('<span class="pp-strat-sep">·</span>');
 
-    // Carry pills (compact, plain text)
+    // Carries (compact, single line)
     let carryLine = '';
     if (h.carries && h.carries.length) {
       carryLine = `<div class="pp-carries">⚑ ${h.carries.map(([desc,yds]) => `${fmtText(desc)} ${fmtDist(yds)}`).join(' · ')}</div>`;
     }
 
-    // Tip — strip HTML tags for compactness, keep core
+    // Tip — convert warn/birdie spans to bold and apply unit conversion
     let tipText = h.tip
       .replace(/<span class="warn">/g, '<b>')
       .replace(/<span class="birdie">/g, '<b>')
@@ -1444,10 +1452,21 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
 
     const nameSpan = (h.name && h.name !== '—') ? `<span class="pp-name">${h.name}</span>` : '';
 
+    // Green SVG — fetch from GREENS map by course id + hole num
+    const greenObj = GREENS[course.id + '-' + h.num];
+    const greenInner = greenObj ? innerSVG(makeGreenSVG(greenObj)) : '';
+    const holeInner = innerSVG(makeSVG(h));
+
+    const shapesCell = `
+      <div class="pp-shapes">
+        <svg viewBox="0 0 56 78" preserveAspectRatio="xMidYMid meet" class="pp-svg-hole" xmlns="http://www.w3.org/2000/svg">${holeInner}</svg>
+        ${greenInner ? `<svg viewBox="0 0 100 80" preserveAspectRatio="xMidYMid meet" class="pp-svg-green" xmlns="http://www.w3.org/2000/svg">${greenInner}</svg>` : ''}
+      </div>`;
+
     return `
       <tr>
         <td class="pp-num">${h.num}</td>
-        <td><svg viewBox="0 0 56 78" preserveAspectRatio="xMidYMid meet" class="pp-svg" xmlns="http://www.w3.org/2000/svg">${makeSVG(h).match(/<svg[^>]*>([\s\S]*?)<\/svg>/)[1]}</svg></td>
+        <td>${shapesCell}</td>
         <td class="pp-cell-num">${h.par}</td>
         <td class="pp-cell-num">${fmtDist(h.yds)}</td>
         <td class="pp-cell-num">${h.si}</td>
@@ -1461,18 +1480,21 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
       </tr>`;
   }).join('');
 
+  // Tee marker line — extract just the tee description from course sub
+  const teeMarker = course.sub.split('·').slice(-1)[0].trim();
+
   return `
     <div class="print-page">
       <div class="pp-header">
         <div class="pp-header-l">
           <div class="pp-eyebrow">Day ${dayNum} · Ayrshire Coast</div>
           <h2 class="pp-title">${course.name}</h2>
-          <div class="pp-subhead">${nineLabel} · Par ${totalPar} · ${fmtDist(totalYds)} · ${course.sub.split('·').slice(-1)[0].trim()}</div>
+          <div class="pp-subhead">${nineLabel} · Par ${totalPar} · ${fmtDist(totalYds)} · ${teeMarker}</div>
         </div>
         <div class="pp-header-r">
-          Par<b>${course.par}</b>
-          Rating<b>${course.cr}</b>
-          Slope<b>${course.slope}</b>
+          <div class="pp-header-r-row">Par <b>${course.par}</b></div>
+          <div class="pp-header-r-row">Rating <b>${course.cr}</b></div>
+          <div class="pp-header-r-row">Slope <b>${course.slope}</b></div>
         </div>
       </div>
       <table class="pp-table">
@@ -1481,7 +1503,7 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
         </colgroup>
         <thead>
           <tr>
-            <th>#</th><th>Shape</th><th>Par</th><th>${units === 'm' ? 'M' : 'Yds'}</th><th>SI</th><th>Strategy &amp; Tip</th><th>Score</th>
+            <th>#</th><th>Hole / Green</th><th>Par</th><th>${units === 'm' ? 'M' : 'Yds'}</th><th>SI</th><th>Strategy &amp; Tip</th><th>Score</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -1494,7 +1516,6 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
       <div class="pp-footer">
         <div class="pp-notes">
           <div class="pp-notes-lbl">Notes</div>
-          <div class="pp-notes-line"></div>
           <div class="pp-notes-line"></div>
         </div>
         <div class="pp-pagenum">${pageIdx} / ${totalPages}</div>

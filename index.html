@@ -28,6 +28,40 @@ body{background:var(--cream);color:var(--text);font-family:'Source Sans 3',sans-
 .cover-tag:active{transform:scale(.97)}
 .cover-tag::after{content:' ›';opacity:.55;font-weight:700}
 
+.cover-notes-btn{display:inline-block;margin-top:18px;font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:2.2px;color:var(--green);background:var(--gold);padding:9px 22px;border-radius:2px;text-decoration:none;cursor:pointer;text-transform:uppercase;font-weight:700;transition:background .18s, color .18s, transform .12s;position:relative;z-index:1}
+.cover-notes-btn:hover{background:var(--gold-l)}
+.cover-notes-btn:active{transform:scale(.97)}
+
+/* COURSE NOTES SECTION */
+.notes-section{background:var(--cream-d);padding:50px 20px 60px;scroll-margin-top:108px}
+.notes-section-hdr{text-align:center;max-width:680px;margin:0 auto 36px}
+.notes-eyebrow{font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.notes-section-hdr h2{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,38px);font-weight:400;color:var(--green);line-height:1.15;margin:0 0 10px}
+.notes-section-intro{font-style:italic;color:var(--text-m);font-size:14px;line-height:1.6}
+.notes-courses{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+.note-card{background:var(--cream);border:1px solid var(--div);border-radius:4px;overflow:hidden}
+.note-card-hdr{background:var(--green);color:var(--cream);padding:18px 24px;display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.nc-eyebrow{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-bottom:3px}
+.nc-name{font-family:'Playfair Display',serif;font-size:24px;line-height:1.1;font-weight:400}
+.nc-meta{margin-left:auto;text-align:right;font-family:'Courier Prime',monospace;font-size:10px;color:var(--gold-l);letter-spacing:.5px;line-height:1.5}
+.nc-meta b{color:var(--cream);font-family:'Playfair Display',serif;font-size:14px;font-weight:400;margin-left:5px}
+.note-body{padding:22px 26px}
+.note-body p{margin:0 0 14px;line-height:1.65;color:var(--text);font-size:14px}
+.note-body p:last-child{margin-bottom:0}
+.note-body p b{color:var(--green);font-weight:600}
+.note-pullquote{border-left:3px solid var(--gold);padding:6px 0 6px 14px;margin:12px 0;font-style:italic;color:var(--text-m);font-size:13.5px}
+.note-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--div)}
+.note-fact{display:flex;flex-direction:column;gap:3px}
+.note-fact-lbl{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;opacity:.8}
+.note-fact-val{font-family:'Playfair Display',serif;font-size:15px;color:var(--green);line-height:1.25}
+.note-fact-val small{font-family:'Source Sans 3',sans-serif;font-size:11px;color:var(--text-m);font-style:italic;display:block;margin-top:2px}
+
+@media(max-width:600px){
+  .nc-meta{margin-left:0;text-align:left;width:100%}
+  .note-body{padding:18px 18px}
+  .notes-section{padding:36px 14px 44px}
+}
+
 /* HANDICAP BAR */
 .hcp-bar{position:sticky;top:0;z-index:100;background:var(--green);border-bottom:2px solid var(--gold);padding:10px 16px;box-shadow:0 2px 12px rgba(0,0,0,.35)}
 .hcp-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -50,6 +84,13 @@ body{background:var(--cream);color:var(--text);font-family:'Source Sans 3',sans-
 .wind-btn{background:transparent;border:none;color:rgba(245,240,232,.55);font-family:'Courier Prime',monospace;font-size:9.5px;font-weight:700;letter-spacing:1px;padding:3px 7px;cursor:pointer;border-radius:2px;text-transform:uppercase;transition:background .15s, color .15s}
 .wind-btn:hover{color:var(--cream);background:rgba(201,168,76,.12)}
 .wind-btn.active{background:var(--gold);color:var(--green)}
+
+/* WIND KEY — legend for arrow badges */
+.wind-key{display:flex;align-items:center;gap:8px;padding:2px 8px;background:rgba(0,0,0,.12);border:1px solid var(--div);border-radius:3px}
+.wk-item{display:inline-flex;align-items:center;gap:4px}
+.wk-item .meta-wind{width:16px;height:16px;font-size:10px;cursor:default}
+.wk-item .meta-wind.wind-none{font-size:8px}
+.wk-lbl{font-family:'Courier Prime',monospace;font-size:9px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;opacity:.85}
 
 /* COURSE HEADER */
 .course-section{scroll-margin-top:108px}
@@ -152,6 +193,10 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
   .hcp-row{gap:8px}
   .wind-dir-group, .wind-speed-group, .unit-toggle{padding:1px}
   .wind-btn{padding:3px 5px;font-size:8.5px}
+  .wind-key{gap:5px;padding:1px 5px}
+  .wk-item{gap:2px}
+  .wk-item .meta-wind{width:14px;height:14px;font-size:9px}
+  .wk-lbl{font-size:7.5px;letter-spacing:.5px}
   .wind-speed-group{margin-left:0}
   .hcp-row-2{flex-wrap:wrap}
   .top-btn{top:10px;right:10px;font-size:9px;padding:3px 8px}
@@ -209,6 +254,17 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 .pp-notes-lbl{font-family:'Courier Prime',monospace;font-size:5.5pt;letter-spacing:0.8px;color:#666;text-transform:uppercase;margin-bottom:0.7mm}
 .pp-notes-line{border-bottom:0.3pt solid #999;height:3mm;margin-bottom:1mm}
 .pp-pagenum{font-family:'Courier Prime',monospace;font-size:5.5pt;color:#999;letter-spacing:0.8px;margin-left:5mm;white-space:nowrap}
+
+/* PRINT NOTES PAGE */
+.print-page-notes .pp-header{border-bottom:1.2pt solid #1a3a2a}
+.ppn-body{flex:1;padding-top:2mm;column-count:2;column-gap:5mm;column-rule:0.3pt solid #d0c8a8}
+.ppn-body p{font-size:7.5pt;line-height:1.45;color:#222;margin:0 0 2.2mm;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.ppn-body p b{color:#1a3a2a;font-weight:700}
+.ppn-pullquote{font-style:italic;font-size:7pt;line-height:1.35;color:#5a4a08;border-left:1.2pt solid #c9a84c;padding:1mm 0 1mm 2.5mm;margin:1.5mm 0;break-inside:avoid;page-break-inside:avoid}
+.ppn-facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;margin-top:2mm;padding:2mm;background:#f5f0e0;border-top:0.5pt solid #c4b990;border-bottom:0.5pt solid #c4b990}
+.ppn-fact-lbl{font-family:'Courier Prime',monospace;font-size:5pt;letter-spacing:0.8px;color:#8a6f1c;text-transform:uppercase;margin-bottom:0.5mm}
+.ppn-fact-val{font-family:'Playfair Display',serif;font-size:9pt;color:#1a3a2a;line-height:1.15;margin-bottom:0.4mm;font-weight:400}
+.ppn-fact-sub{font-size:6pt;color:#444;font-style:italic;line-height:1.2}
 </style>
 </head>
 <body>
@@ -223,6 +279,7 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
     <a class="cover-tag" data-target="turnberry">Day 3 · Turnberry</a>
     <a class="cover-tag" data-target="western">Day 4 · W. Gailes</a>
   </div>
+  <a class="cover-notes-btn" data-target="course-notes">⚲ Course Notes &amp; History</a>
 </div>
 
 <div class="hcp-bar" id="hcpBar">
@@ -250,6 +307,12 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
       <button class="wind-btn" data-dir="W">W</button>
       <button class="wind-btn" data-dir="NW">NW</button>
     </div>
+    <div class="wind-key" title="Wind effect on each hole">
+      <span class="wk-item"><span class="meta-wind wind-help">↑</span><span class="wk-lbl">Help</span></span>
+      <span class="wk-item"><span class="meta-wind wind-cross">↔</span><span class="wk-lbl">Cross</span></span>
+      <span class="wk-item"><span class="meta-wind wind-hurt">↓</span><span class="wk-lbl">Into</span></span>
+      <span class="wk-item"><span class="meta-wind wind-none">·</span><span class="wk-lbl">Calm</span></span>
+    </div>
     <div class="unit-toggle" id="unitToggle">
       <button class="wind-btn active" data-unit="y">Yds</button>
       <button class="wind-btn" data-unit="m">M</button>
@@ -261,6 +324,142 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 <div id="courses-container"></div>
 
 <div class="print-view" id="printView"></div>
+
+<section class="notes-section" id="course-notes">
+  <div class="notes-section-hdr">
+    <div class="notes-eyebrow">Course Notes &amp; History</div>
+    <h2>Four Courses, One Coastline</h2>
+    <p class="notes-section-intro">A short note on each of the four courses — design, history, and the moments that shaped them. Read before you play; remember as you walk off the 18th.</p>
+  </div>
+
+  <div class="notes-courses">
+
+    <!-- DUNDONALD -->
+    <div class="note-card">
+      <div class="note-card-hdr">
+        <div>
+          <div class="nc-eyebrow">Day 1 · Modern Links</div>
+          <div class="nc-name">Dundonald Links</div>
+        </div>
+        <div class="nc-meta">
+          Opened <b>2005</b><br>
+          Architect <b>Kyle Phillips</b>
+        </div>
+      </div>
+      <div class="note-body">
+        <p>Dundonald is the youngest of the quartet by more than half a century, and it wears its modernity well. The name — Gaelic for <b>"Fort Donald"</b> — comes from Iron Age fortifications dating to around 200 BC, found on the nearby hillside. A golf course existed on this land in the early 1900s, but it was requisitioned during the Second World War for the Dundonald Camp military station, where <b>D-Day landings were rehearsed</b> before being launched at Normandy.</p>
+
+        <p>The course as we know it today was conceived as Southern Gailes — a planned golf and residential development that didn't materialise. In early 2003, <b>Loch Lomond Golf Club</b> stepped in and acquired the property to give its members a true links to complement their inland parkland masterpiece. They hired California-based <b>Kyle Phillips</b>, fresh from his triumph at Kingsbarns, and the course opened in 2005 to a chorus of approval.</p>
+
+        <div class="note-pullquote">"A championship, Ayrshire-style, links course that felt and played as though it was an old, rediscovered course, by integrating newly constructed features with existing site features." — Kyle Phillips on his design intent</div>
+
+        <p>Phillips's signature touches are everywhere: wide and welcoming fairways that tighten on approach, deep pot bunkers placed with strategic precision, and bold green complexes that test every aspect of the short game. The course's defenders are its two burns — narrow and cunningly camouflaged — which intrude on the 3rd, 6th, 9th, 13th, 14th, 16th and 18th. Unlike many traditional links, you don't see the sea from every hole; you just feel its winds.</p>
+
+        <p>Dundonald hosted the <b>Scottish Open in 2017</b>, won by Rafa Cabrera Bello in a playoff over Callum Shinkwin, and has welcomed the <b>Women's Scottish Open</b> annually since 2022. It now serves as one of four Final Qualifying venues for The Open Championship through 2026. The 2021 arrival of a new clubhouse, accommodation lodges, and a £25m investment by Darwin Escapes have completed the transformation from members' winter retreat to fully-fledged destination resort.</p>
+
+        <div class="note-facts">
+          <div class="note-fact"><span class="note-fact-lbl">Signature hole</span><span class="note-fact-val">11th · Par 3 <small>120y, three deep front pots, "Cauldron" behind</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Stroke index 1</span><span class="note-fact-val">16th <small>Long par 4, often into prevailing wind</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Tournament heritage</span><span class="note-fact-val">Scottish Open 2017 <small>Cabrera Bello d. Shinkwin (playoff)</small></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESTWICK -->
+    <div class="note-card">
+      <div class="note-card-hdr">
+        <div>
+          <div class="nc-eyebrow">Day 2 · The Birthplace</div>
+          <div class="nc-name">Prestwick Golf Club</div>
+        </div>
+        <div class="nc-meta">
+          Founded <b>1851</b><br>
+          Architect <b>Old Tom Morris</b>
+        </div>
+      </div>
+      <div class="note-body">
+        <p>Prestwick is where it all began. On <b>17 October 1860</b>, eight professional golfers gathered on this stretch of Ayrshire links to compete for a red Moroccan leather belt with silver clasps. Three rounds of a 12-hole course. Willie Park of Musselburgh shot 174, two strokes better than the local favourite, Old Tom Morris. The Open Championship was born.</p>
+
+        <p>The club itself was founded in 1851 when <b>57 members</b> met at the Red Lion Inn in Prestwick. They bought the two cottages opposite the tavern to serve as a clubhouse, and appointed Old Tom Morris as their first <b>Keeper of the Green, Ball and Clubmaker</b>. Old Tom laid out the original 12 holes — the first golf course he ever designed, and the prototype for many that followed.</p>
+
+        <div class="note-pullquote">"This is where the magic of The Open began one fateful October day in 1860. There had to be a first, and it happened here at Prestwick." — Ken Goodwin, Club Secretary</div>
+
+        <p>Prestwick hosted the first 12 Open Championships exclusively, and the championship continued to be played here until 1925 — <b>24 stagings in total</b>, second only to St Andrews. Old Tom won four times. His son Tommy — the original prodigy — won three consecutively from 1868 to 1870, earning him the Challenge Belt outright. Tommy also recorded the first <b>hole-in-one</b> in Open history, and a modern-day albatross on the 578-yard opening hole. The original scorecards are still kept in Prestwick's archive.</p>
+
+        <p>The course was extended to 18 holes in 1882, again under Old Tom's guidance, and <b>six of the original greens are still in play today</b>. A simple stone cairn west of the clubhouse marks the spot where the first Open tee shot was struck. The oak lockers in the smoke room date to 1882. There is no other place in golf where you can walk so directly in the footsteps of the game's pioneers.</p>
+
+        <div class="note-facts">
+          <div class="note-fact"><span class="note-fact-lbl">Signature stretch</span><span class="note-fact-val">3rd–5th <small>Cardinal · Bridge · Himalayas</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Opens hosted</span><span class="note-fact-val">24 <small>1860–1925, second only to St Andrews</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Course extended</span><span class="note-fact-val">1882 <small>From 12 holes to 18, by Old Tom</small></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TURNBERRY -->
+    <div class="note-card">
+      <div class="note-card-hdr">
+        <div>
+          <div class="nc-eyebrow">Day 3 · The Ailsa</div>
+          <div class="nc-name">Trump Turnberry — Ailsa</div>
+        </div>
+        <div class="nc-meta">
+          Opened <b>1906</b><br>
+          Restored <b>Mackenzie Ross, 1951</b>
+        </div>
+      </div>
+      <div class="note-body">
+        <p>Turnberry is golf as theatre. At the turn of the twentieth century, the <b>Third Marquess of Ailsa</b> owned 71 hectares of agriculturally useless coastal land at Turnberry Green. Through his position as a director of the Glasgow & Southwestern Railway, he saw an opportunity: lay out a golf course, build a grand hotel, run a train line to it. <b>Willie Fernie</b>, winner of the 1893 Open, designed the original 13 holes in 1901. The Station Hotel — with revolutionary electric lighting and running water — opened on 17 May 1906.</p>
+
+        <p>Then came the wars. In both World Wars, Turnberry was requisitioned by the military as an airfield. The First World War saw the dunes flattened for runways. The Second World War was worse: the RAF established a flying school, the hotel became a military hospital, and <b>up to 200 personnel perished</b> during training operations at the base. The memorial near the 12th green honours those airmen. Concrete runways scarred the links for years afterwards.</p>
+
+        <div class="note-pullquote">"After two years of painstaking work, the outcome was an overwhelming success." Mackenzie Ross removed the runways, covered the land with sand and topsoil, and reopened the Ailsa in 1951.</div>
+
+        <p>Twenty-six years later, in <b>1977</b>, Turnberry hosted its first Open — and produced what many still call the greatest head-to-head in golf history. <b>Tom Watson and Jack Nicklaus</b> played the final two rounds paired together in glorious sunshine, finishing eleven strokes ahead of third place. Watson's closing 65 secured victory by a single stroke. The <b>Duel in the Sun</b>.</p>
+
+        <p>Turnberry has hosted four Opens in total: 1977 (Watson), 1986 (Greg Norman), 1994 (Nick Price), and 2009, when a 59-year-old Watson came within a single putt of a sixth Claret Jug before losing a four-hole playoff to Stewart Cink. Since Donald Trump's purchase of the resort in 2014, <b>Mackenzie & Ebert</b> have overseen a transformation that has cost more than £200m. Five new holes were created along the coastal edge; every hole received new tees and bunkers. The new par-3 9th, played from a tee on a rocky headland directly toward the Turnberry lighthouse, is now one of the most photographed shots in golf. Further refinements were completed as recently as May 2025.</p>
+
+        <div class="note-facts">
+          <div class="note-fact"><span class="note-fact-lbl">Signature hole</span><span class="note-fact-val">9th · Bruce's Castle <small>Par 3 across the rocks, lighthouse green</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Opens hosted</span><span class="note-fact-val">4 <small>1977 · 1986 · 1994 · 2009</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Iconic memorial</span><span class="note-fact-val">12th hole <small>RAF airmen, both World Wars</small></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WESTERN GAILES -->
+    <div class="note-card">
+      <div class="note-card-hdr">
+        <div>
+          <div class="nc-eyebrow">Day 4 · Pure Links</div>
+          <div class="nc-name">Western Gailes Golf Club</div>
+        </div>
+        <div class="nc-meta">
+          Founded <b>1897</b><br>
+          Architect <b>F. Morris</b>
+        </div>
+      </div>
+      <div class="note-body">
+        <p>Western Gailes is the only true seaside links of the four. Founded in <b>1897</b> by four Glaswegians who were fed up with playing on muddy parkland courses in the city, they leased land from the Duke of Portland and recruited their first <b>Keeper of the Green, Mr. F. Morris</b>, to lay out the course. The result is one of the narrowest plots of golfing land anywhere in the world — Western Gailes is wedged between the Firth of Clyde to the west and the West Coast railway line to the east, never more than two holes wide.</p>
+
+        <p>The routing is famously unusual: a continuous anticlockwise loop from the clubhouse. <b>Holes 1–4 head north inland</b>, then the course turns at the 5th and plays <b>nine consecutive holes south</b> along the water's edge — the celebrated coastal stretch where the holes sit tight to the shore with the Firth of Clyde always on your right. The closing five holes (14–18) turn back north and run inland to the clubhouse, typically <b>with the prevailing wind at your back</b>. The 17th — a brutal par 4 that plays much like a par 5 against the wind — is widely considered one of the toughest holes in Scotland.</p>
+
+        <div class="note-pullquote">"Nearly half the greens lie in saucers or bowls and so gather the ball, but as many are full of subtle slopes that neutralise any advantage." — Frank Pennink, Golfer's Companion</div>
+
+        <p>The course was modified materially in the 1970s by <b>Fred Hawtree</b>, particularly the 3rd, 4th and 5th holes, and more recently by <b>Mackenzie & Ebert</b> during the COVID period — re-siting drive bunkers, adding forward tees for shorter players, and reshaping green surrounds on the 5th, 9th and 18th. The bunkers are now a mix of the traditional revetted style and more naturalised forms. Tom Doak has called the 6th (Lappock) and 7th (Sea) <b>"truly world class"</b>.</p>
+
+        <p>Western Gailes is also the most traditional club of the four. Gentlemen are required to wear jacket and tie when entering and leaving the clubhouse. There is no driving range. There is no shop selling logoed gear by the bushel. There is, instead, a club that welcomes its visitors as members for the day, a clubhouse that overlooks the 18th green, and a lunch served after your round that is included in the green fee. It is golf as it was practised — and intended — at the close of the nineteenth century, and the fact that it has survived all but unchanged is reason enough to play it.</p>
+
+        <div class="note-facts">
+          <div class="note-fact"><span class="note-fact-lbl">Signature holes</span><span class="note-fact-val">6th &amp; 7th <small>Lappock &amp; Sea — "truly world class"</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Hardest hole</span><span class="note-fact-val">17th <small>Plays like a par 5 into the wind</small></span></div>
+          <div class="note-fact"><span class="note-fact-lbl">Curtis Cup</span><span class="note-fact-val">1972 <small>Hosted by Western Gailes</small></span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <footer>Ayrshire Shot Saver · Dundonald · Prestwick · Turnberry · Western Gailes<br>SI values are indicative — verify against club scorecard</footer>
 
@@ -939,7 +1138,7 @@ const COURSES = [
     {num:3, tee:{club:'3W',line:'Lay-up short of ditch'},approach:{club:'Wedge',notes:'after carry'},target:'Birdie chance',miss:'L',land:'l', dir:220, bail:'l', carries:[['cross ditch',280], ['lay up short',240]],  name:'—', par:5, yds:482, si:9,  shape:'S',
      haz:[{t:'OOB',s:'R'},{t:'W',x:32,y:35,w:18,h:3},{t:'B',x:38,y:50,rx:3.5,ry:2.5},{t:'B',x:38,y:18,rx:3,ry:2.5}],
      tip:'<span class="warn">Ditch encroaches from the right and snakes across the fairway over a 300-yard stretch.</span> Smart play: lay up short of the fairway bunker off the tee, then play left of the ditch. Most cross the ditch with the second shot. Green has trouble right and a back bunker. <span class="birdie">Birdie chance for longer hitters who plot their way well.</span>'},
-    {num:4, tee:{club:'5i',line:'Front-right of green'},target:'Par',miss:'Short',visual:'+1 club wind',land:'c', dir:110, bail:'sf', carries:[['carry front bunkers',170]],  name:'—', par:3, yds:192, si:7,  shape:'P3',
+    {num:4, tee:{club:'5i',line:'Front-right of green'},target:'Par',miss:'Short',visual:'+1 club wind',land:'c', dir:230, bail:'sf', carries:[['carry front bunkers',170]],  name:'—', par:3, yds:192, si:7,  shape:'P3',
      haz:[{t:'B',x:18,y:18,rx:3.5,ry:2.5},{t:'B',x:38,y:18,rx:3.5,ry:2.5}],
      tip:'Long par 3 normally <b>into the prevailing wind</b>. Trouble back-left and back-right. <b>Aim for the front-right of the green.</b> Coming up a touch short isn\'t fatal — tight links fairway approach allows you to putt or chip easily.'},
     {num:5, tee:{club:'Driver',line:'Right-centre'},approach:{club:'5i'},target:'Birdie chance',miss:'R',land:'cr', dir:230, bail:'r', carries:[['clear left pot',200]],  name:'—', par:5, yds:491, si:15, shape:'DL',
@@ -1065,13 +1264,13 @@ const COURSES = [
     {num:3, tee:{club:'Driver',line:'Right-centre'},approach:{club:'4i',notes:'into wind'},target:'Bogey OK',miss:'R',visual:'+15y into prevailing',land:'cr', dir:220, bail:'r', carries:[],  name:'Blaw Wearie',   par:4, yds:463, si:1,  shape:'S',
      haz:[{t:'B',x:15,y:50,rx:4,ry:3},{t:'B',x:15,y:44,rx:4,ry:3},{t:'B',x:37,y:22,rx:4,ry:3},{t:'B',x:37,y:28,rx:3.5,ry:2.5}],
      tip:'"Out of Breath." Longest par 4, usually <b>into the prevailing wind.</b> <span class="warn">Two fairway bunkers left; rough right is severe.</span> <b>Par here is exceptional — bogey is a very good score.</b>'},
-    {num:4, tee:{club:'7i',line:'Bowl gathers centre'},target:'Par',miss:'Centre',visual:'-1 club (helping)',land:'c', dir:290, bail:'r', carries:[],  name:'Woe-Be-Tide',   par:3, yds:159, si:15, shape:'P3',
+    {num:4, tee:{club:'7i',line:'Bowl gathers centre'},target:'Par',miss:'Centre',visual:'-1 club (helping)',land:'c', dir:50, bail:'r', carries:[],  name:'Woe-Be-Tide',   par:3, yds:159, si:15, shape:'P3',
      haz:[{t:'B',x:34,y:20,rx:5,ry:3.5,pot:1}],
      tip:'Wind usually helping. Bowl-shaped green but <b>putts still break seaward.</b> <span class="warn">Deep pot bunker short right — avoid at all costs.</span> Firth left, steep rough right. <b>Hit the green.</b>'},
     {num:5, tee:{club:'Driver',line:'Tee right'},approach:{club:'5i'},target:'Par',miss:'R',visual:'Dramatic dogleg',land:'r', dir:250, bail:'r', carries:[['clear right pots',220]],  name:'Fin Me Oot',    par:4, yds:454, si:3,  shape:'SHL',
      haz:[{t:'B',x:37,y:54,rx:3.5,ry:2.5},{t:'B',x:16,y:24,rx:3.5,ry:3},{t:'B',x:22,y:21,rx:3.5,ry:3},{t:'B',x:14,y:28,rx:3.5,ry:3}],
      tip:'"Find Me Out." Dramatic right-to-left dogleg — green partially hidden in the dunes. <b>Tee right for a clearer view on approach.</b> Five bunkers guard the green; it slopes back to front. <span class="birdie">One of the most beautiful holes in Scotland.</span>'},
-    {num:6, tee:{club:'4i',line:'Middle/back of green'},target:'Par',miss:'Long',visual:'Long par 3, helping wind',land:'c', dir:300, bail:'tr', carries:[['carry front slope',215]],  name:'Tappie Toorie', par:3, yds:219, si:9,  shape:'P3',
+    {num:6, tee:{club:'4i',line:'Middle/back of green'},target:'Par',miss:'Long',visual:'Long par 3, helping wind',land:'c', dir:60, bail:'tr', carries:[['carry front slope',215]],  name:'Tappie Toorie', par:3, yds:219, si:9,  shape:'P3',
      haz:[{t:'B',x:37,y:16,rx:3.5,ry:2.5,pot:1},{t:'B',x:22,y:20,rx:4,ry:3},{t:'B',x:16,y:24,rx:4,ry:3},{t:'B',x:14,y:30,rx:4,ry:3}],
      tip:'"Hit the Top." One of the hardest holes on the course. Elevated green, steep front slope. <span class="warn">The worst pot bunker on the course sits at the bottom of that slope.</span> Wind usually helps. <b>Don\'t be short — aim middle or back of the green.</b>'},
     {num:7, tee:{club:'Driver',line:'Right side'},approach:{club:'7i',notes:'after lay-up'},target:'Birdie chance',miss:'R',visual:'Coastal dogleg',land:'cr', dir:320, bail:'r', carries:[],  name:'Roon The Ben',  par:5, yds:509, si:13, shape:'SHL',
@@ -1092,13 +1291,13 @@ const COURSES = [
     {num:12, tee:{club:'Driver',line:'Left fairway'},approach:{club:'6i',notes:'+1 elev'},target:'Birdie chance',miss:'L',land:'cl', dir:130, bail:'r', carries:[], name:'Monument',      par:4, yds:427, si:6,  shape:'S',
      haz:[{t:'B',x:14,y:50,rx:3.5,ry:2.5},{t:'B',x:14,y:42,rx:3.5,ry:2.5},{t:'B',x:14,y:34,rx:3.5,ry:2.5}],
      tip:'<span class="warn">Three bunkers on the left side of the fairway — but the best approach to the elevated green is from the left.</span> <b>Take one extra club for the elevation.</b> <span class="birdie">Attack this one — the best mid-round birdie chance.</span>'},
-    {num:13, tee:{club:'Driver',line:'Fairway'},approach:{club:'6i',notes:'know pin tier'},target:'Bogey OK',miss:'R',visual:'Into prevailing',land:'cr', dir:110, bail:'l', carries:[], name:'Tickly Tap',    par:4, yds:388, si:4,  shape:'SR',
+    {num:13, tee:{club:'Driver',line:'Fairway'},approach:{club:'6i',notes:'know pin tier'},target:'Bogey OK',miss:'R',visual:'Into prevailing',land:'cr', dir:220, bail:'l', carries:[], name:'Tickly Tap',    par:4, yds:388, si:4,  shape:'SR',
      haz:[{t:'B',x:14,y:50,rx:3.5,ry:2.5},{t:'B',x:14,y:43,rx:3.5,ry:2.5},{t:'B',x:14,y:36,rx:3.5,ry:2.5}],
      tip:'Typically into the prevailing wind. Slight dogleg right with an elevated green. <b>Green is narrow front-to-back with a ridge through the middle</b> — know the pin position before committing to a club.'},
     {num:14, tee:{club:'Driver',line:'Right-centre'},approach:{club:'5i',notes:'+1 uphill'},target:'Par',miss:'L',visual:'Uphill snake',land:'cr', dir:70, bail:'r', carries:[], name:'Risk-An-Hope',  par:4, yds:417, si:8,  shape:'SR',
      haz:[{t:'B',x:16,y:42,rx:3.5,ry:2.5},{t:'B',x:38,y:36,rx:3.5,ry:2.5}],
      tip:'Snakes uphill — <b>lighthouse and Arran as a backdrop.</b> Allow for the climb on the approach (one club minimum). This is where the round comes into focus — make a good swing and trust it.'},
-    {num:15, tee:{club:'Driver',line:'Fairway'},approach:{club:'7i',notes:'aim R of pin'},target:'Par',miss:'R',land:'c', dir:90, bail:'r', carries:[], name:"Ca' Canny",     par:4, yds:407, si:10, shape:'S',
+    {num:15, tee:{club:'Driver',line:'Fairway'},approach:{club:'7i',notes:'aim R of pin'},target:'Par',miss:'R',land:'c', dir:215, bail:'r', carries:[], name:"Ca' Canny",     par:4, yds:407, si:10, shape:'S',
      haz:[{t:'B',x:16,y:24,rx:5,ry:3.5},{t:'B',x:38,y:24,rx:5,ry:3.5}],
      tip:'"Go Carefully." <b>Aim right side of the green</b> — like most Ailsa holes, it slopes seaward on the left. Two large front bunkers will grab anything weak.'},
     {num:16, tee:{club:'Driver',line:'Fairway'},approach:{club:'7i',notes:'carry burn'},target:'Par',miss:'L',land:'l', dir:130, bail:'l', carries:[['carry the burn',380]], name:'Wee Burn',      par:4, yds:405, si:12, shape:'S',
@@ -1131,16 +1330,16 @@ const COURSES = [
     {num:4, tee:{club:'Driver',line:'Fairway'},approach:{club:'5i',notes:'+1 over bunkers'},target:'Bogey OK',miss:'L',land:'c', dir:20, bail:'l', carries:[['carry front bunkers',395]],  name:'—', par:4, yds:395, si:2,  shape:'S',
      haz:[{t:'B',x:15,y:52,rx:3.5,ry:2.5},{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'B',x:20,y:24,rx:3.5,ry:2.5},{t:'B',x:26,y:22,rx:3.5,ry:2.5},{t:'B',x:34,y:22,rx:3.5,ry:2.5}],
      tip:'A brute. <span class="warn">Bunkers both sides of fairway, three more just in front of the green.</span> <b>Take one extra club into the green</b> to carry the front bunkers. Bogey is perfectly acceptable.'},
-    {num:5, tee:{club:'Driver',line:'Fairway'},approach:{club:'4i',notes:'plays as 5'},target:'Bogey OK',miss:'R',visual:'Plays as par 5',land:'c', dir:0, bail:'r', carries:[],  name:'—', par:4, yds:473, si:4,  shape:'S',
+    {num:5, tee:{club:'Driver',line:'Fairway'},approach:{club:'4i',notes:'plays as 5'},target:'Bogey OK',miss:'R',visual:'Plays as par 5',land:'c', dir:180, bail:'r', carries:[],  name:'—', par:4, yds:473, si:4,  shape:'S',
      haz:[{t:'B',x:15,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:42,rx:3.5,ry:2.5}],
      tip:'Near par-5 length played as a 4. <b>Coastal stretch begins here.</b> Manage the tee shot, get to the fairway, and <b>accept bogey willingly.</b> Don\'t make a big number here.'},
-    {num:6, tee:{club:'Driver',line:'Don\'t cut corner'},approach:{club:'5i',notes:'into dogleg'},target:'Birdie chance',miss:'R',visual:'Hidden green',land:'cr', dir:350, bail:'r', carries:[],  name:'Lappock', par:5, yds:472, si:6, shape:'DR',
+    {num:6, tee:{club:'Driver',line:'Don\'t cut corner'},approach:{club:'5i',notes:'into dogleg'},target:'Birdie chance',miss:'R',visual:'Hidden green',land:'cr', dir:200, bail:'r', carries:[],  name:'Lappock', par:5, yds:472, si:6, shape:'DR',
      haz:[{t:'B',x:16,y:52,rx:3,ry:2.5},{t:'B',x:40,y:26,rx:3,ry:2.5},{t:'B',x:46,y:20,rx:3.5,ry:3}],
      tip:'<span class="birdie">Best birdie chance on the front nine.</span> Dog-legs right then back left — the green hides in the dunes until the last moment. <b>Don\'t cut the corner on the tee.</b> Lay up, pitch on, make your putt.'},
-    {num:7, tee:{club:'4i',line:'Fat of green'},target:'Par',miss:'Short',visual:'-1 club elev tee',land:'c', dir:270, bail:null, carries:[['clear front bunkers',170]],  name:'—', par:3, yds:187, si:16, shape:'P3',
+    {num:7, tee:{club:'4i',line:'Fat of green'},target:'Par',miss:'Short',visual:'-1 club elev tee',land:'c', dir:180, bail:null, carries:[['clear front bunkers',170]],  name:'—', par:3, yds:187, si:16, shape:'P3',
      haz:[{t:'B',x:16,y:22,rx:4,ry:3,pot:1},{t:'B',x:40,y:22,rx:4,ry:3,pot:1},{t:'B',x:28,y:27,rx:5,ry:3.5}],
      tip:'Elevated tee — one of the finest par 3s in Scotland. <b>The green sits below in a natural amphitheatre.</b> Drop 1–2 clubs for the elevation. Don\'t hunt a difficult pin; centre of green is perfectly fine.'},
-    {num:8, tee:{club:'Driver',line:'Trust the width'},approach:{club:'7i'},target:'Par',miss:'L',land:'cl', dir:160, bail:'l', carries:[],  name:'—', par:4, yds:372, si:12, shape:'DR',
+    {num:8, tee:{club:'Driver',line:'Trust the width'},approach:{club:'7i'},target:'Par',miss:'L',land:'cl', dir:170, bail:'l', carries:[],  name:'—', par:4, yds:372, si:12, shape:'DR',
      haz:[{t:'B',x:16,y:54,rx:3.5,ry:2.5},{t:'B',x:42,y:28,rx:3,ry:2.5},{t:'B',x:42,y:22,rx:3,ry:2.5}],
      tip:'The tee shot looks tighter than it is — <b>trust the width of the landing area.</b> Hole turns right to follow the coast. Sea is now on your right all the way through to hole 13.'},
     {num:9, tee:{club:'Driver',line:'Fairway'},approach:{club:'Wedge'},target:'Birdie chance',miss:'L',land:'cl', dir:200, bail:'l', carries:[],  name:'—', par:4, yds:318, si:18, shape:'SR',
@@ -1155,24 +1354,24 @@ const COURSES = [
     {num:12, tee:{club:'Driver',line:'Diagonal — pick risk'},approach:{club:'7i',notes:'short safe'},target:'Par',miss:'Short',land:'cr', dir:170, bail:'r', carries:[], name:'—', par:4, yds:445, si:1,  shape:'SR',
      haz:[{t:'B',x:20,y:22,rx:4,ry:3,pot:1},{t:'B',x:36,y:22,rx:4,ry:3,pot:1}],
      tip:'<b>Tee shot plays diagonally — pick your risk level.</b> <span class="warn">Two pot bunkers guard front left and right of the green.</span> Rough behind is brutal. Play short and safe on the approach.'},
-    {num:13, tee:{club:'6i',line:'Fat of green'},target:'Par',miss:'Centre',visual:'Coastal breeze',land:'c', dir:90, bail:null, carries:[], name:'—', par:3, yds:146, si:17, shape:'P3',
+    {num:13, tee:{club:'6i',line:'Fat of green'},target:'Par',miss:'Centre',visual:'Coastal breeze',land:'c', dir:180, bail:null, carries:[], name:'—', par:3, yds:146, si:17, shape:'P3',
      haz:[{t:'B',x:16,y:22,rx:4,ry:3},{t:'B',x:40,y:22,rx:4,ry:3}],
      tip:'Similar distance to the 7th but lower elevation. <b>Deep bunkers and sea breeze</b> make this trickier than it looks. Aim for the fat of the green. Last of the spectacular coastal holes.'},
     {num:14, tee:{club:'Driver',line:'Avoid bunkers'},approach:{club:'7i',notes:'lay up'},target:'Par',miss:'L',visual:'10 bunkers — discipline',land:'c', dir:30, bail:'r', carries:[], name:'—', par:5, yds:561, si:5,  shape:'S',
      haz:[{t:'B',x:15,y:54,rx:3,ry:2.5},{t:'B',x:37,y:50,rx:3,ry:2.5},{t:'B',x:15,y:42,rx:3,ry:2.5},{t:'B',x:37,y:38,rx:3,ry:2.5},{t:'B',x:15,y:32,rx:3,ry:2.5},{t:'B',x:37,y:28,rx:3,ry:2.5}],
      tip:'Chosen for <em>The 500 World\'s Greatest Golf Holes.</em> Often downwind. <span class="warn">Ten bunkers in play.</span> <b>Don\'t let the tailwind tempt you into hero shots.</b> Three sensible shots earns par. <span class="birdie">Birdie possible if you\'re swinging well.</span>'},
-    {num:15, tee:{club:'7i',line:'Centre'},target:'Par',miss:'Short',visual:'Sea breeze',land:'c', dir:200, bail:null, carries:[['clear front bunkers',145]], name:'—', par:3, yds:184, si:15, shape:'P3',
+    {num:15, tee:{club:'7i',line:'Centre'},target:'Par',miss:'Short',visual:'Sea breeze',land:'c', dir:20, bail:null, carries:[['clear front bunkers',145]], name:'—', par:3, yds:184, si:15, shape:'P3',
      haz:[{t:'B',x:16,y:20,rx:4,ry:3},{t:'B',x:40,y:20,rx:4,ry:3}],
      tip:'Short but well-protected. Deep bunkers and sea breeze always in play. Aim centre-green. Par heading into the closing three is valuable.'},
-    {num:16, tee:{club:'Driver',line:'Fairway'},approach:{club:'5i',notes:'over burn'},target:'Bogey OK',miss:'L',visual:'Round-defining',land:'cr', dir:130, bail:null, carries:[['carry burn front',405]], name:'—', par:4, yds:405, si:7,  shape:'S',
+    {num:16, tee:{club:'Driver',line:'Fairway'},approach:{club:'5i',notes:'over burn'},target:'Bogey OK',miss:'L',visual:'Round-defining',land:'cr', dir:30, bail:null, carries:[['carry burn front',405]], name:'—', par:4, yds:405, si:7,  shape:'S',
      haz:[{t:'B',x:15,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'W',x:10,y:18,w:36,h:4}],
      tip:'<span class="warn">Burn runs across in front of the green.</span> Two large fairway bunkers off the tee. <b>Don\'t be short on the approach.</b> This is where a good round can unravel — stay committed.'},
-    {num:17, tee:{club:'Driver',line:'L of clubhouse'},approach:{club:'6i'},target:'Bogey OK',miss:'L',visual:'Hardest hole',land:'l', dir:180, bail:'l', carries:[['inside R bunkers',230]], name:'—', par:4, yds:445, si:11, shape:'SR',
+    {num:17, tee:{club:'Driver',line:'L of clubhouse'},approach:{club:'6i'},target:'Bogey OK',miss:'L',visual:'Hardest hole',land:'l', dir:0, bail:'l', carries:[['inside R bunkers',230]], name:'—', par:4, yds:445, si:11, shape:'SR',
      haz:[{t:'B',x:37,y:50,rx:3,ry:2.5,pot:1},{t:'B',x:37,y:44,rx:3,ry:2.5,pot:1},{t:'OOB',s:'R'}],
      tip:'Hardest hole according to members. <b>Aim for the left edge of the clubhouse</b> with the tee shot. <span class="warn">Fade or slice and you\'re on the railway tracks.</span> Semi-blind approach to a green ringed by dune mounds. Bogey and be happy.'},
-    {num:18, tee:{club:'Driver',line:'Right side'},approach:{club:'7i'},target:'Par',miss:'R',land:'cr', dir:110, bail:'r', carries:[], name:'—', par:4, yds:385, si:13, shape:'DL',
+    {num:18, tee:{club:'Driver',line:'Right side'},approach:{club:'7i'},target:'Par',miss:'R',land:'cr', dir:350, bail:'r', carries:[], name:'—', par:4, yds:385, si:13, shape:'DL',
      haz:[{t:'B',x:37,y:48,rx:3.5,ry:2.5},{t:'B',x:37,y:40,rx:3.5,ry:2.5}],
-     tip:'Turns left back to the clubhouse; typically into the prevailing wind. <b>Tee right side to open up the approach.</b> A worthy, demanding finish — give it everything.'},
+     tip:'Turns back inland toward the clubhouse; the prevailing SW typically helps the closing five. <b>Tee right side to open up the approach.</b> A worthy, demanding finish — give it everything.'},
   ]
 }
 ];
@@ -1412,6 +1611,95 @@ function updateWind(){
 }
 
 
+// ─── COURSE NOTES (used by screen section AND print pages) ────────────────────
+const COURSE_NOTES = [
+  {
+    id: 'dundonald',
+    eyebrow: 'Day 1 · Modern Links',
+    name: 'Dundonald Links',
+    meta1: { label: 'Opened', value: '2005' },
+    meta2: { label: 'Architect', value: 'Kyle Phillips' },
+    paragraphs: [
+      `Dundonald is the youngest of the quartet by more than half a century, and it wears its modernity well. The name — Gaelic for <b>"Fort Donald"</b> — comes from Iron Age fortifications dating to around 200 BC, found on the nearby hillside. A golf course existed on this land in the early 1900s, but it was requisitioned during the Second World War for the Dundonald Camp military station, where <b>D-Day landings were rehearsed</b> before being launched at Normandy.`,
+      `The course as we know it today was conceived as Southern Gailes — a planned golf and residential development that didn't materialise. In early 2003, <b>Loch Lomond Golf Club</b> stepped in and acquired the property to give its members a true links to complement their inland parkland masterpiece. They hired California-based <b>Kyle Phillips</b>, fresh from his triumph at Kingsbarns, and the course opened in 2005 to a chorus of approval.`
+    ],
+    pullquote: `"A championship, Ayrshire-style, links course that felt and played as though it was an old, rediscovered course, by integrating newly constructed features with existing site features." — Kyle Phillips on his design intent`,
+    paragraphsAfter: [
+      `Phillips's signature touches are everywhere: wide and welcoming fairways that tighten on approach, deep pot bunkers placed with strategic precision, and bold green complexes that test every aspect of the short game. The course's defenders are its two burns — narrow and cunningly camouflaged — which intrude on the 3rd, 6th, 9th, 13th, 14th, 16th and 18th. Unlike many traditional links, you don't see the sea from every hole; you just feel its winds.`,
+      `Dundonald hosted the <b>Scottish Open in 2017</b>, won by Rafa Cabrera Bello in a playoff over Callum Shinkwin, and has welcomed the <b>Women's Scottish Open</b> annually since 2022. It now serves as one of four Final Qualifying venues for The Open Championship through 2026. The 2021 arrival of a new clubhouse, accommodation lodges, and a £25m investment by Darwin Escapes have completed the transformation from members' winter retreat to fully-fledged destination resort.`
+    ],
+    facts: [
+      { label: 'Signature hole', value: '11th · Par 3', sub: '120y, three deep front pots, "Cauldron" behind' },
+      { label: 'Stroke index 1', value: '16th', sub: 'Long par 4, often into prevailing wind' },
+      { label: 'Tournament heritage', value: 'Scottish Open 2017', sub: 'Cabrera Bello d. Shinkwin (playoff)' }
+    ]
+  },
+  {
+    id: 'prestwick',
+    eyebrow: 'Day 2 · The Birthplace',
+    name: 'Prestwick Golf Club',
+    meta1: { label: 'Founded', value: '1851' },
+    meta2: { label: 'Architect', value: 'Old Tom Morris' },
+    paragraphs: [
+      `Prestwick is where it all began. On <b>17 October 1860</b>, eight professional golfers gathered on this stretch of Ayrshire links to compete for a red Moroccan leather belt with silver clasps. Three rounds of a 12-hole course. Willie Park of Musselburgh shot 174, two strokes better than the local favourite, Old Tom Morris. The Open Championship was born.`,
+      `The club itself was founded in 1851 when <b>57 members</b> met at the Red Lion Inn in Prestwick. They bought the two cottages opposite the tavern to serve as a clubhouse, and appointed Old Tom Morris as their first <b>Keeper of the Green, Ball and Clubmaker</b>. Old Tom laid out the original 12 holes — the first golf course he ever designed, and the prototype for many that followed.`
+    ],
+    pullquote: `"This is where the magic of The Open began one fateful October day in 1860. There had to be a first, and it happened here at Prestwick." — Ken Goodwin, Club Secretary`,
+    paragraphsAfter: [
+      `Prestwick hosted the first 12 Open Championships exclusively, and the championship continued to be played here until 1925 — <b>24 stagings in total</b>, second only to St Andrews. Old Tom won four times. His son Tommy — the original prodigy — won three consecutively from 1868 to 1870, earning him the Challenge Belt outright. Tommy also recorded the first <b>hole-in-one</b> in Open history, and a modern-day albatross on the 578-yard opening hole. The original scorecards are still kept in Prestwick's archive.`,
+      `The course was extended to 18 holes in 1882, again under Old Tom's guidance, and <b>six of the original greens are still in play today</b>. A simple stone cairn west of the clubhouse marks the spot where the first Open tee shot was struck. The oak lockers in the smoke room date to 1882. There is no other place in golf where you can walk so directly in the footsteps of the game's pioneers.`
+    ],
+    facts: [
+      { label: 'Signature stretch', value: '3rd–5th', sub: 'Cardinal · Bridge · Himalayas' },
+      { label: 'Opens hosted', value: '24', sub: '1860–1925, second only to St Andrews' },
+      { label: 'Course extended', value: '1882', sub: 'From 12 holes to 18, by Old Tom' }
+    ]
+  },
+  {
+    id: 'turnberry',
+    eyebrow: 'Day 3 · The Ailsa',
+    name: 'Trump Turnberry — Ailsa',
+    meta1: { label: 'Opened', value: '1906' },
+    meta2: { label: 'Restored', value: 'Mackenzie Ross, 1951' },
+    paragraphs: [
+      `Turnberry is golf as theatre. At the turn of the twentieth century, the <b>Third Marquess of Ailsa</b> owned 71 hectares of agriculturally useless coastal land at Turnberry Green. Through his position as a director of the Glasgow & Southwestern Railway, he saw an opportunity: lay out a golf course, build a grand hotel, run a train line to it. <b>Willie Fernie</b>, winner of the 1893 Open, designed the original 13 holes in 1901. The Station Hotel — with revolutionary electric lighting and running water — opened on 17 May 1906.`,
+      `Then came the wars. In both World Wars, Turnberry was requisitioned by the military as an airfield. The First World War saw the dunes flattened for runways. The Second World War was worse: the RAF established a flying school, the hotel became a military hospital, and <b>up to 200 personnel perished</b> during training operations at the base. The memorial near the 12th green honours those airmen. Concrete runways scarred the links for years afterwards.`
+    ],
+    pullquote: `"After two years of painstaking work, the outcome was an overwhelming success." Mackenzie Ross removed the runways, covered the land with sand and topsoil, and reopened the Ailsa in 1951.`,
+    paragraphsAfter: [
+      `Twenty-six years later, in <b>1977</b>, Turnberry hosted its first Open — and produced what many still call the greatest head-to-head in golf history. <b>Tom Watson and Jack Nicklaus</b> played the final two rounds paired together in glorious sunshine, finishing eleven strokes ahead of third place. Watson's closing 65 secured victory by a single stroke. The <b>Duel in the Sun</b>.`,
+      `Turnberry has hosted four Opens in total: 1977 (Watson), 1986 (Greg Norman), 1994 (Nick Price), and 2009, when a 59-year-old Watson came within a single putt of a sixth Claret Jug before losing a four-hole playoff to Stewart Cink. Since Donald Trump's purchase of the resort in 2014, <b>Mackenzie & Ebert</b> have overseen a transformation that has cost more than £200m. Five new holes were created along the coastal edge; every hole received new tees and bunkers. The new par-3 9th, played from a tee on a rocky headland directly toward the Turnberry lighthouse, is now one of the most photographed shots in golf. Further refinements were completed as recently as May 2025.`
+    ],
+    facts: [
+      { label: 'Signature hole', value: "9th · Bruce's Castle", sub: 'Par 3 across the rocks, lighthouse green' },
+      { label: 'Opens hosted', value: '4', sub: '1977 · 1986 · 1994 · 2009' },
+      { label: 'Iconic memorial', value: '12th hole', sub: 'RAF airmen, both World Wars' }
+    ]
+  },
+  {
+    id: 'western',
+    eyebrow: 'Day 4 · Pure Links',
+    name: 'Western Gailes Golf Club',
+    meta1: { label: 'Founded', value: '1897' },
+    meta2: { label: 'Architect', value: 'F. Morris' },
+    paragraphs: [
+      `Western Gailes is the only true seaside links of the four. Founded in <b>1897</b> by four Glaswegians who were fed up with playing on muddy parkland courses in the city, they leased land from the Duke of Portland and recruited their first <b>Keeper of the Green, Mr. F. Morris</b>, to lay out the course. The result is one of the narrowest plots of golfing land anywhere in the world — Western Gailes is wedged between the Firth of Clyde to the west and the West Coast railway line to the east, never more than two holes wide.`,
+      `The routing is famously unusual: a continuous anticlockwise loop from the clubhouse. <b>Holes 1–4 head north inland</b>, then the course turns at the 5th and plays <b>nine consecutive holes south</b> along the water's edge — the celebrated coastal stretch where the holes sit tight to the shore with the Firth of Clyde always on your right. The closing five holes (14–18) turn back north and run inland to the clubhouse, typically <b>with the prevailing wind at your back</b>. The 17th — a brutal par 4 that plays much like a par 5 against the wind — is widely considered one of the toughest holes in Scotland.`
+    ],
+    pullquote: `"Nearly half the greens lie in saucers or bowls and so gather the ball, but as many are full of subtle slopes that neutralise any advantage." — Frank Pennink, Golfer's Companion`,
+    paragraphsAfter: [
+      `The course was modified materially in the 1970s by <b>Fred Hawtree</b>, particularly the 3rd, 4th and 5th holes, and more recently by <b>Mackenzie & Ebert</b> during the COVID period — re-siting drive bunkers, adding forward tees for shorter players, and reshaping green surrounds on the 5th, 9th and 18th. The bunkers are now a mix of the traditional revetted style and more naturalised forms. Tom Doak has called the 6th (Lappock) and 7th (Sea) <b>"truly world class"</b>.`,
+      `Western Gailes is also the most traditional club of the four. Gentlemen are required to wear jacket and tie when entering and leaving the clubhouse. There is no driving range. There is no shop selling logoed gear by the bushel. There is, instead, a club that welcomes its visitors as members for the day, a clubhouse that overlooks the 18th green, and a lunch served after your round that is included in the green fee. It is golf as it was practised — and intended — at the close of the nineteenth century, and the fact that it has survived all but unchanged is reason enough to play it.`
+    ],
+    facts: [
+      { label: 'Signature holes', value: '6th & 7th', sub: 'Lappock & Sea — "truly world class"' },
+      { label: 'Hardest hole', value: '17th', sub: 'Plays like a par 5 into the wind' },
+      { label: 'Curtis Cup', value: '1972', sub: 'Hosted by Western Gailes' }
+    ]
+  }
+];
+
+// ─── COURSE NOTES (used by screen section AND print pages) ──────────────────── END
 // ─── PRINT VIEW (A5 notebook pages) ───────────────────────────────────────────
 function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) {
   const totalYds = holes.reduce((a,h) => a + h.yds, 0);
@@ -1523,16 +1811,60 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
     </div>`;
 }
 
+function renderPrintNotesPage(note, dayNum, pageIdx, totalPages) {
+  const para = (p) => `<p>${p}</p>`;
+  const factsHtml = note.facts.map(f => `
+    <div class="ppn-fact">
+      <div class="ppn-fact-lbl">${f.label}</div>
+      <div class="ppn-fact-val">${f.value}</div>
+      <div class="ppn-fact-sub">${f.sub}</div>
+    </div>`).join('');
+
+  return `
+    <div class="print-page print-page-notes">
+      <div class="pp-header">
+        <div class="pp-header-l">
+          <div class="pp-eyebrow">Day ${dayNum} · ${note.eyebrow.split('·').slice(-1)[0].trim()}</div>
+          <h2 class="pp-title">${note.name}</h2>
+          <div class="pp-subhead">Course Notes &amp; History</div>
+        </div>
+        <div class="pp-header-r">
+          <div class="pp-header-r-row">${note.meta1.label} <b>${note.meta1.value}</b></div>
+          <div class="pp-header-r-row">${note.meta2.label} <b>${note.meta2.value}</b></div>
+        </div>
+      </div>
+      <div class="ppn-body">
+        ${note.paragraphs.map(para).join('')}
+        <div class="ppn-pullquote">${note.pullquote}</div>
+        ${note.paragraphsAfter.map(para).join('')}
+      </div>
+      <div class="ppn-facts">${factsHtml}</div>
+      <div class="pp-footer">
+        <div class="pp-notes">
+          <div class="pp-notes-lbl">Reflections</div>
+          <div class="pp-notes-line"></div>
+        </div>
+        <div class="pp-pagenum">${pageIdx} / ${totalPages}</div>
+      </div>
+    </div>`;
+}
+
 function buildPrintView() {
   const pv = document.getElementById('printView');
   if (!pv) return;
   const pages = [];
-  const totalPages = COURSES.length * 2;
+  // 2 hole pages per course + 1 notes page per course = 12 pages total
+  const totalPages = COURSES.length * 3;
   COURSES.forEach((c, idx) => {
     const front = c.holes.slice(0, 9);
     const back  = c.holes.slice(9, 18);
     pages.push(renderPrintPage(c, idx + 1, 'Front Nine · Holes 1–9', front, pages.length + 1, totalPages));
     pages.push(renderPrintPage(c, idx + 1, 'Back Nine · Holes 10–18', back, pages.length + 1, totalPages));
+    // Find the matching notes by course id
+    const note = COURSE_NOTES.find(n => n.id === c.id);
+    if (note) {
+      pages.push(renderPrintNotesPage(note, idx + 1, pages.length + 1, totalPages));
+    }
   });
   pv.innerHTML = pages.join('');
 }
@@ -1633,8 +1965,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cover-tag → scroll to course header (programmatic, no hash nav)
-  document.querySelectorAll('.cover-tag[data-target]').forEach(el => {
+  // Cover-tag and notes-button → scroll to target (programmatic, no hash nav)
+  document.querySelectorAll('.cover-tag[data-target], .cover-notes-btn[data-target]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       const target = document.getElementById(el.dataset.target);

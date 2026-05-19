@@ -266,11 +266,8 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 .pp-tip b{color:#1a3a2a;font-style:normal;font-weight:700}
 .pp-carries{font-family:'Courier Prime',monospace;font-size:3.8pt;color:#8b1a1a;margin-top:0.2mm;line-height:1.1}
 .pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:5pt;font-weight:700;color:#1a3a2a;padding:0.7mm 0.8mm;text-transform:uppercase;letter-spacing:0.25px;border-top:0.7pt solid #1a3a2a;border-bottom:none}
-.pp-footer{margin-top:1mm;display:flex;justify-content:space-between;align-items:flex-end}
-.pp-notes{flex:1}
-.pp-notes-lbl{font-family:'Courier Prime',monospace;font-size:4pt;letter-spacing:0.5px;color:#666;text-transform:uppercase;margin-bottom:0.4mm}
-.pp-notes-line{border-bottom:0.2pt solid #999;height:2mm;margin-bottom:0.6mm}
-.pp-pagenum{font-family:'Courier Prime',monospace;font-size:4pt;color:#999;letter-spacing:0.5px;margin-left:3mm;white-space:nowrap}
+.pp-footer{margin-top:0.5mm;display:flex;justify-content:flex-end;align-items:center}
+.pp-pagenum{font-family:'Courier Prime',monospace;font-size:4pt;color:#999;letter-spacing:0.5px;white-space:nowrap}
 
 /* PRINT NOTES PAGE (A6) */
 .print-page-notes .pp-header{border-bottom:0.8pt solid #1a3a2a}
@@ -1850,10 +1847,6 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
         </tfoot>
       </table>
       <div class="pp-footer">
-        <div class="pp-notes">
-          <div class="pp-notes-lbl">Notes</div>
-          <div class="pp-notes-line"></div>
-        </div>
         <div class="pp-pagenum">${pageIdx} / ${totalPages}</div>
       </div>
     </div>`;
@@ -1888,10 +1881,6 @@ function renderPrintNotesPage(note, dayNum, pageIdx, totalPages) {
       </div>
       <div class="ppn-facts">${factsHtml}</div>
       <div class="pp-footer">
-        <div class="pp-notes">
-          <div class="pp-notes-lbl">Reflections</div>
-          <div class="pp-notes-line"></div>
-        </div>
         <div class="pp-pagenum">${pageIdx} / ${totalPages}</div>
       </div>
     </div>`;
@@ -1928,12 +1917,13 @@ function buildPrintView() {
   COURSES.forEach((c, idx) => {
     const front = c.holes.slice(0, 9);
     const back  = c.holes.slice(9, 18);
-    pages.push(renderPrintPage(c, idx + 1, 'Front Nine · Holes 1–9', front, pages.length + 1, totalPages));
-    pages.push(renderPrintPage(c, idx + 1, 'Back Nine · Holes 10–18', back, pages.length + 1, totalPages));
+    // Course notes first, then the two nines
     const note = COURSE_NOTES.find(n => n.id === c.id);
     if (note) {
       pages.push(renderPrintNotesPage(note, idx + 1, pages.length + 1, totalPages));
     }
+    pages.push(renderPrintPage(c, idx + 1, 'Front Nine · Holes 1–9', front, pages.length + 1, totalPages));
+    pages.push(renderPrintPage(c, idx + 1, 'Back Nine · Holes 10–18', back, pages.length + 1, totalPages));
   });
   pv.innerHTML = pages.join('');
 }

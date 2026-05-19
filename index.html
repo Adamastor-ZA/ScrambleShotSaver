@@ -242,29 +242,29 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 .pp-header-r b{display:inline-block;font-size:6.5pt;color:#1a3a2a;font-family:'Playfair Display',serif;font-weight:400;margin-left:1mm;min-width:5mm;text-align:right}
 .pp-header-r-row{white-space:nowrap}
 .pp-table{width:100%;border-collapse:collapse;font-size:5pt;flex:1;table-layout:fixed}
-.pp-table col.c-num{width:4.5mm}
-.pp-table col.c-svg{width:13mm}
-.pp-table col.c-par{width:4mm}
-.pp-table col.c-yds{width:7mm}
-.pp-table col.c-si{width:4mm}
+.pp-table col.c-stats{width:11mm}
+.pp-table col.c-svg{width:25mm}
 .pp-table col.c-body{width:auto}
-.pp-table col.c-score{width:7mm}
 .pp-table thead th{background:#1a3a2a;color:#e8c97a;font-family:'Courier Prime',monospace;font-size:4pt;font-weight:700;letter-spacing:0.25px;text-transform:uppercase;padding:0.5mm 0.8mm;text-align:left}
-.pp-table tbody td{padding:0.5mm 0.8mm;border-bottom:0.2pt solid #c4b990;vertical-align:middle}
+.pp-table tbody td{padding:0.6mm 0.8mm;border-bottom:0.2pt solid #c4b990;vertical-align:middle}
 .pp-table tbody tr:nth-child(even) td{background:rgba(38,112,64,.04)}
-.pp-table .pp-num{font-family:'Playfair Display',serif;font-size:7.5pt;font-weight:700;color:#1a3a2a;text-align:center;line-height:1;vertical-align:middle}
+/* Stacked stats cell — hole #, par, yds, SI */
+.pp-stats{text-align:center;line-height:1.1;background:rgba(38,112,64,.06);vertical-align:middle}
+.pp-stats-num{display:block;font-family:'Playfair Display',serif;font-size:11pt;font-weight:700;color:#1a3a2a;line-height:1;margin-bottom:0.4mm}
+.pp-stats-par{display:block;font-family:'Courier Prime',monospace;font-size:4.5pt;color:#5a4a08;letter-spacing:.3px;font-weight:700;margin-bottom:0.2mm}
+.pp-stats-yds{display:block;font-family:'Courier Prime',monospace;font-size:5pt;color:#1a3a2a;font-weight:700;margin-bottom:0.2mm}
+.pp-stats-si{display:block;font-family:'Courier Prime',monospace;font-size:4.2pt;color:#666;letter-spacing:.3px}
 .pp-table .pp-name{font-family:'Playfair Display',serif;font-style:italic;font-size:4.5pt;color:#1a3a2a;display:block;line-height:1;margin-bottom:0.2mm}
-.pp-table .pp-cell-num{font-family:'Courier Prime',monospace;font-size:5pt;color:#1a3a2a;font-weight:700;vertical-align:middle}
-.pp-shapes{display:flex;gap:0.5mm;align-items:center;justify-content:center}
-.pp-svg-hole{width:5.5mm;height:auto;display:block}
-.pp-svg-green{width:7mm;height:auto;display:block}
+.pp-shapes-cell{padding:0.4mm}
+.pp-shapes{display:flex;gap:1mm;align-items:center;justify-content:center}
+.pp-svg-hole{width:9mm;height:auto;display:block}
+.pp-svg-green{width:13mm;height:auto;display:block}
 .pp-strat{font-family:'Courier Prime',monospace;font-size:4pt;color:#1a3a2a;letter-spacing:0.05px;line-height:1.15;margin-bottom:0.2mm}
 .pp-strat b{color:#5a4a08;font-weight:700;margin-right:0.4mm}
 .pp-strat .pp-strat-sep{color:#999;margin:0 0.4mm}
 .pp-tip{font-size:4.5pt;color:#333;font-style:italic;line-height:1.12}
 .pp-tip b{color:#1a3a2a;font-style:normal;font-weight:700}
 .pp-carries{font-family:'Courier Prime',monospace;font-size:3.8pt;color:#8b1a1a;margin-top:0.2mm;line-height:1.1}
-.pp-score-cell{border-left:0.3pt solid #999}
 .pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:5pt;font-weight:700;color:#1a3a2a;padding:0.7mm 0.8mm;text-transform:uppercase;letter-spacing:0.25px;border-top:0.7pt solid #1a3a2a;border-bottom:none}
 .pp-footer{margin-top:1mm;display:flex;justify-content:space-between;align-items:flex-end}
 .pp-notes{flex:1}
@@ -1798,18 +1798,19 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
 
     return `
       <tr>
-        <td class="pp-num">${h.num}</td>
-        <td>${shapesCell}</td>
-        <td class="pp-cell-num">${h.par}</td>
-        <td class="pp-cell-num">${fmtDist(h.yds)}</td>
-        <td class="pp-cell-num">${h.si}</td>
+        <td class="pp-stats">
+          <span class="pp-stats-num">${h.num}</span>
+          <span class="pp-stats-par">Par ${h.par}</span>
+          <span class="pp-stats-yds">${fmtDist(h.yds)}</span>
+          <span class="pp-stats-si">SI ${h.si}</span>
+        </td>
+        <td class="pp-shapes-cell">${shapesCell}</td>
         <td>
           ${nameSpan}
           <div class="pp-strat">${stratLine}</div>
           <div class="pp-tip">${tipText}</div>
           ${carryLine}
         </td>
-        <td class="pp-score-cell"></td>
       </tr>`;
   }).join('');
 
@@ -1832,17 +1833,19 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
       </div>
       <table class="pp-table">
         <colgroup>
-          <col class="c-num"><col class="c-svg"><col class="c-par"><col class="c-yds"><col class="c-si"><col class="c-body"><col class="c-score">
+          <col class="c-stats"><col class="c-svg"><col class="c-body">
         </colgroup>
         <thead>
           <tr>
-            <th>#</th><th>Hole / Green</th><th>Par</th><th>${units === 'm' ? 'M' : 'Yds'}</th><th>SI</th><th>Strategy &amp; Tip</th><th>Score</th>
+            <th>Hole</th><th>Shape</th><th>Strategy &amp; Tip</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
         <tfoot>
           <tr>
-            <td></td><td></td><td>${totalPar}</td><td>${fmtDist(totalYds)}</td><td></td><td style="text-align:right">${nineLabel.startsWith('Front')?'OUT':'IN'} TOTAL</td><td></td>
+            <td><span class="pp-stats-par">Par ${totalPar}</span><br><span class="pp-stats-yds">${fmtDist(totalYds)}</span></td>
+            <td></td>
+            <td style="text-align:right">${nineLabel.startsWith('Front')?'OUT':'IN'} TOTAL</td>
           </tr>
         </tfoot>
       </table>

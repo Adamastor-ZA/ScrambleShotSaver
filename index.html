@@ -265,7 +265,10 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 .pp-tip{font-size:4.5pt;color:#333;font-style:italic;line-height:1.12}
 .pp-tip b{color:#1a3a2a;font-style:normal;font-weight:700}
 .pp-carries{font-family:'Courier Prime',monospace;font-size:3.8pt;color:#8b1a1a;margin-top:0.2mm;line-height:1.1}
-.pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:5pt;font-weight:700;color:#1a3a2a;padding:0.7mm 0.8mm;text-transform:uppercase;letter-spacing:0.25px;border-top:0.7pt solid #1a3a2a;border-bottom:none}
+.pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:4.5pt;font-weight:700;color:#1a3a2a;padding:0.4mm 0.8mm;text-transform:uppercase;letter-spacing:0.25px;border-top:0.5pt solid #1a3a2a;border-bottom:none;line-height:1.1}
+.pp-table tfoot .pp-stats-par,
+.pp-table tfoot .pp-stats-yds{display:inline;font-size:4.5pt;margin:0}
+.pp-table tfoot td:first-child{font-family:'Courier Prime',monospace;color:#1a3a2a}
 .pp-footer{margin-top:0.5mm;display:flex;justify-content:flex-end;align-items:center}
 .pp-pagenum{font-family:'Courier Prime',monospace;font-size:4pt;color:#999;letter-spacing:0.5px;white-space:nowrap}
 
@@ -1840,7 +1843,7 @@ function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) 
         <tbody>${rows}</tbody>
         <tfoot>
           <tr>
-            <td><span class="pp-stats-par">Par ${totalPar}</span><br><span class="pp-stats-yds">${fmtDist(totalYds)}</span></td>
+            <td>Par ${totalPar} · ${fmtDist(totalYds)}</td>
             <td></td>
             <td style="text-align:right">${nineLabel.startsWith('Front')?'OUT':'IN'} TOTAL</td>
           </tr>

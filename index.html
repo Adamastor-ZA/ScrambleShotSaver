@@ -78,7 +78,7 @@ body{background:var(--cream);color:var(--text);font-family:'Source Sans 3',sans-
 
 /* WIND CONTROLS */
 .wind-dir-group, .unit-toggle{display:flex;gap:3px;background:rgba(0,0,0,.18);border:1px solid var(--div);border-radius:3px;padding:2px}
-.unit-toggle{margin-left:auto}
+.hcp-row-1 .unit-toggle{margin-left:auto}
 .print-btn{background:rgba(0,0,0,.18);border:1px solid var(--gold);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 11px;border-radius:3px;cursor:pointer;text-transform:uppercase;transition:background .15s,color .15s}
 .print-btn:hover{background:var(--gold);color:var(--green)}
 .wind-btn{background:transparent;border:none;color:rgba(245,240,232,.55);font-family:'Courier Prime',monospace;font-size:9.5px;font-weight:700;letter-spacing:1px;padding:3px 7px;cursor:pointer;border-radius:2px;text-transform:uppercase;transition:background .15s, color .15s}
@@ -117,14 +117,17 @@ body{background:var(--cream);color:var(--text);font-family:'Source Sans 3',sans-
 .hole-pair > .green-block{box-sizing:border-box}
 
 /* HOLE CARD */
-.hole-card{display:grid;grid-template-columns:32px 80px 1fr;border-bottom:1px solid var(--div);min-height:74px;transition:background .2s;scroll-margin-top:108px}
+.hole-card{display:grid;grid-template-columns:96px 1fr;border-bottom:1px solid var(--div);min-height:74px;transition:background .2s;scroll-margin-top:108px}
 .hole-card:has(+ .green-block){border-bottom:none}
 .hole-card.shot1{background:rgba(33,122,62,.07)}
 .hole-card.shot2{background:rgba(138,107,16,.09)}
-.hc-num{background:var(--green);color:var(--gold);font-family:'Playfair Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center}
-.hc-svg{padding:4px 4px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--div);background:rgba(0,0,0,.04)}
-.hc-svg svg{width:56px;height:auto;display:block}
-.hc-body{padding:9px 12px}
+.hc-diagram{display:flex;flex-direction:column;border-right:1px solid var(--div);background:rgba(0,0,0,.04)}
+.hc-diagram-head{background:var(--green);color:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:8px 10px 6px;gap:4px}
+.hc-num{font-family:'Playfair Display',serif;font-size:22px;line-height:1;color:var(--gold)}
+.hc-par-tag{font-family:'Courier Prime',monospace;font-size:9.5px;font-weight:700;color:var(--gold);letter-spacing:1.2px;opacity:.85;text-transform:uppercase}
+.hc-svg{padding:5px 4px 6px;display:flex;align-items:center;justify-content:center;flex:1}
+.hc-svg svg{width:84px;height:auto;display:block}
+.hc-body{padding:8px 12px}
 .hc-meta{display:flex;align-items:center;gap:6px 7px;flex-wrap:wrap;margin-bottom:5px;row-gap:5px}
 .meta-par{background:var(--green);color:var(--gold);font-family:'Courier Prime',monospace;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;letter-spacing:.5px}
 .meta-yds{font-family:'Courier Prime',monospace;font-size:10px;color:var(--text-m);letter-spacing:.5px}
@@ -156,12 +159,13 @@ body{background:var(--cream);color:var(--text);font-family:'Source Sans 3',sans-
 .carry-pill .cp-yds{color:#8b1a1a;font-weight:700;flex-shrink:0}
 
 /* GREEN BLOCK — appears beneath each hole-card */
-.green-block{display:grid;grid-template-columns:32px 80px 1fr;border-bottom:2px solid var(--div);background:linear-gradient(180deg, rgba(38,112,64,.07) 0%, rgba(38,112,64,.03) 100%);min-height:74px}
-.gb-rail{background:var(--green-mid);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 0}
-.gb-rail-icon{font-size:13px;color:var(--gold);line-height:1}
-.gb-rail-label{font-family:'Courier Prime',monospace;font-size:7px;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.85}
-.gb-svg{padding:4px 4px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--div);background:rgba(0,0,0,.04)}
-.gb-svg svg{width:56px;height:auto;display:block}
+.green-block{display:grid;grid-template-columns:96px 1fr;border-bottom:2px solid var(--div);background:linear-gradient(180deg, rgba(38,112,64,.07) 0%, rgba(38,112,64,.03) 100%);min-height:74px}
+.gb-diagram{display:flex;flex-direction:column;border-right:1px solid var(--div);background:rgba(0,0,0,.04)}
+.gb-diagram-head{background:var(--green-mid);color:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:8px 10px 6px;gap:4px}
+.gb-diagram-icon{font-family:'Playfair Display',serif;font-size:18px;line-height:1;color:var(--gold)}
+.gb-diagram-label{font-family:'Courier Prime',monospace;font-size:9.5px;font-weight:700;color:var(--gold);letter-spacing:1.5px;opacity:.9;text-transform:uppercase}
+.gb-svg{padding:5px 4px 6px;display:flex;align-items:center;justify-content:center;flex:1}
+.gb-svg svg{width:84px;height:auto;display:block}
 .gb-body{padding:6px 12px}
 .gb-chips{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px}
 .gb-chip{font-size:9px;letter-spacing:.4px;font-family:'Courier Prime',monospace;padding:2px 6px;border-radius:9px;background:rgba(0,0,0,.07);color:var(--text-m);text-transform:uppercase;font-weight:700;border:1px solid rgba(0,0,0,.06)}
@@ -184,27 +188,40 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
 .si-note{font-size:11px;color:var(--text-m);opacity:.65;font-style:italic;padding:6px 16px 6px 20px;background:rgba(0,0,0,.03);border-top:1px solid var(--div)}
 
 @media(max-width:480px){
-  .hole-card{grid-template-columns:28px 68px 1fr;scroll-margin-top:130px}
+  .hole-card{grid-template-columns:80px 1fr;scroll-margin-top:130px}
   .course-section{scroll-margin-top:130px}
-  .green-block{grid-template-columns:28px 68px 1fr}
-  .hc-svg svg, .gb-svg svg{width:50px;height:auto}
+  .green-block{grid-template-columns:80px 1fr}
+  .hc-svg svg, .gb-svg svg{width:70px;height:auto}
+  .hc-num{font-size:18px}
+  .gb-diagram-icon{font-size:14px}
+  .hc-par-tag, .gb-diagram-label{font-size:8.5px;letter-spacing:1px}
+  .hc-diagram-head, .gb-diagram-head{padding:6px 8px 5px}
   .hcp-chips{display:none}
-  .hcp-bar{padding:8px 10px}
-  .hcp-row{gap:8px}
-  .wind-dir-group, .wind-speed-group, .unit-toggle{padding:1px}
-  .wind-btn{padding:3px 5px;font-size:8.5px}
-  .wind-key{gap:5px;padding:1px 5px}
-  .wk-item{gap:2px}
-  .wk-item .meta-wind{width:14px;height:14px;font-size:9px}
-  .wk-lbl{font-size:7.5px;letter-spacing:.5px}
-  .wind-speed-group{margin-left:0}
-  .hcp-row-2{flex-wrap:wrap}
+  .hcp-bar{padding:8px 8px}
+  .hcp-row{gap:6px;flex-wrap:nowrap}
+  .hcp-row-2{flex-wrap:nowrap}
+  .hcp-label{font-size:8.5px;letter-spacing:1px;line-height:1.1}
+  .wind-dir-group, .unit-toggle{padding:1px;gap:1px;flex-shrink:0}
+  .wind-btn{padding:2px 3px;font-size:8px;letter-spacing:.3px}
+  .wind-key{gap:3px;padding:1px 4px;flex-shrink:0}
+  .wk-item{gap:1px}
+  .wk-item .meta-wind{width:13px;height:13px;font-size:8.5px;border-width:.5px}
+  .wk-lbl{font-size:7px;letter-spacing:.3px}
   .top-btn{top:10px;right:10px;font-size:9px;padding:3px 8px}
   .carry-pill{font-size:9.5px;padding:2px 7px}
+  .print-btn{padding:3px 6px;font-size:9px;letter-spacing:.5px}
+  .hcp-input-wrap{padding:3px 6px}
+  #hcpInput{font-size:15px;width:48px}
 }
 
-/* ─── PRINT VIEW (A5 notebook pages) ─────────────────────────────────────── */
-@page { size: A5 portrait; margin: 8mm; }
+@media(max-width:380px){
+  .wind-btn{padding:2px 2px;font-size:7.5px}
+  .wk-lbl{display:none}
+  .wind-key{padding:1px 3px;gap:2px}
+}
+
+/* ─── PRINT VIEW (A6 notebook pages) ─────────────────────────────────────── */
+@page { size: A6 portrait; margin: 5mm; }
 @media screen {
   .print-view{display:none}
 }
@@ -214,57 +231,76 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
   .print-view *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 .print-view{padding:0;margin:0}
-.print-page{width:132mm;min-height:194mm;page-break-after:always;padding:0;display:flex;flex-direction:column;font-family:'Source Sans 3',sans-serif}
+.print-page{width:95mm;min-height:138mm;page-break-after:always;padding:0;display:flex;flex-direction:column;font-family:'Source Sans 3',sans-serif}
 .print-page:last-child{page-break-after:auto}
-.pp-header{border-bottom:1.2pt solid #1a3a2a;padding-bottom:1.5mm;margin-bottom:1.5mm;display:flex;justify-content:space-between;align-items:flex-end}
+.pp-header{border-bottom:0.8pt solid #1a3a2a;padding-bottom:1mm;margin-bottom:1mm;display:flex;justify-content:space-between;align-items:flex-end}
 .pp-header-l{flex:1}
-.pp-eyebrow{font-family:'Courier Prime',monospace;font-size:6pt;letter-spacing:1.2px;color:#c9a84c;text-transform:uppercase;margin-bottom:0.3mm}
-.pp-title{font-family:'Playfair Display',serif;font-size:12pt;font-weight:400;color:#1a3a2a;line-height:1.05;margin:0}
-.pp-subhead{font-size:6.5pt;color:#444;margin-top:0.3mm;font-style:italic}
-.pp-header-r{text-align:right;font-family:'Courier Prime',monospace;font-size:6pt;color:#888;line-height:1.4}
-.pp-header-r b{display:inline-block;font-size:9pt;color:#1a3a2a;font-family:'Playfair Display',serif;font-weight:400;margin-left:2mm;min-width:7mm;text-align:right}
+.pp-eyebrow{font-family:'Courier Prime',monospace;font-size:4.5pt;letter-spacing:0.9px;color:#c9a84c;text-transform:uppercase;margin-bottom:0.2mm}
+.pp-title{font-family:'Playfair Display',serif;font-size:9.5pt;font-weight:400;color:#1a3a2a;line-height:1.05;margin:0}
+.pp-subhead{font-size:5pt;color:#444;margin-top:0.2mm;font-style:italic}
+.pp-header-r{text-align:right;font-family:'Courier Prime',monospace;font-size:4.5pt;color:#888;line-height:1.3}
+.pp-header-r b{display:inline-block;font-size:6.5pt;color:#1a3a2a;font-family:'Playfair Display',serif;font-weight:400;margin-left:1mm;min-width:5mm;text-align:right}
 .pp-header-r-row{white-space:nowrap}
-.pp-table{width:100%;border-collapse:collapse;font-size:6.5pt;flex:1;table-layout:fixed}
-.pp-table col.c-num{width:6mm}
-.pp-table col.c-svg{width:18mm}
-.pp-table col.c-par{width:5mm}
-.pp-table col.c-yds{width:9mm}
-.pp-table col.c-si{width:5mm}
+.pp-table{width:100%;border-collapse:collapse;font-size:5pt;flex:1;table-layout:fixed}
+.pp-table col.c-num{width:4.5mm}
+.pp-table col.c-svg{width:13mm}
+.pp-table col.c-par{width:4mm}
+.pp-table col.c-yds{width:7mm}
+.pp-table col.c-si{width:4mm}
 .pp-table col.c-body{width:auto}
-.pp-table col.c-score{width:9mm}
-.pp-table thead th{background:#1a3a2a;color:#e8c97a;font-family:'Courier Prime',monospace;font-size:5.5pt;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:0.8mm 1.2mm;text-align:left}
-.pp-table tbody td{padding:0.8mm 1.2mm;border-bottom:0.25pt solid #c4b990;vertical-align:middle}
+.pp-table col.c-score{width:7mm}
+.pp-table thead th{background:#1a3a2a;color:#e8c97a;font-family:'Courier Prime',monospace;font-size:4pt;font-weight:700;letter-spacing:0.25px;text-transform:uppercase;padding:0.5mm 0.8mm;text-align:left}
+.pp-table tbody td{padding:0.5mm 0.8mm;border-bottom:0.2pt solid #c4b990;vertical-align:middle}
 .pp-table tbody tr:nth-child(even) td{background:rgba(38,112,64,.04)}
-.pp-table .pp-num{font-family:'Playfair Display',serif;font-size:10pt;font-weight:700;color:#1a3a2a;text-align:center;line-height:1;vertical-align:middle}
-.pp-table .pp-name{font-family:'Playfair Display',serif;font-style:italic;font-size:6pt;color:#1a3a2a;display:block;line-height:1.05;margin-bottom:0.3mm}
-.pp-table .pp-cell-num{font-family:'Courier Prime',monospace;font-size:7pt;color:#1a3a2a;font-weight:700;vertical-align:middle}
-.pp-shapes{display:flex;gap:1mm;align-items:center;justify-content:center}
-.pp-svg-hole{width:7mm;height:auto;display:block}
-.pp-svg-green{width:9mm;height:auto;display:block}
-.pp-strat{font-family:'Courier Prime',monospace;font-size:5.5pt;color:#1a3a2a;letter-spacing:0.15px;line-height:1.2;margin-bottom:0.3mm}
-.pp-strat b{color:#5a4a08;font-weight:700;margin-right:0.6mm}
-.pp-strat .pp-strat-sep{color:#999;margin:0 0.6mm}
-.pp-tip{font-size:6pt;color:#333;font-style:italic;line-height:1.18}
+.pp-table .pp-num{font-family:'Playfair Display',serif;font-size:7.5pt;font-weight:700;color:#1a3a2a;text-align:center;line-height:1;vertical-align:middle}
+.pp-table .pp-name{font-family:'Playfair Display',serif;font-style:italic;font-size:4.5pt;color:#1a3a2a;display:block;line-height:1;margin-bottom:0.2mm}
+.pp-table .pp-cell-num{font-family:'Courier Prime',monospace;font-size:5pt;color:#1a3a2a;font-weight:700;vertical-align:middle}
+.pp-shapes{display:flex;gap:0.5mm;align-items:center;justify-content:center}
+.pp-svg-hole{width:5.5mm;height:auto;display:block}
+.pp-svg-green{width:7mm;height:auto;display:block}
+.pp-strat{font-family:'Courier Prime',monospace;font-size:4pt;color:#1a3a2a;letter-spacing:0.05px;line-height:1.15;margin-bottom:0.2mm}
+.pp-strat b{color:#5a4a08;font-weight:700;margin-right:0.4mm}
+.pp-strat .pp-strat-sep{color:#999;margin:0 0.4mm}
+.pp-tip{font-size:4.5pt;color:#333;font-style:italic;line-height:1.12}
 .pp-tip b{color:#1a3a2a;font-style:normal;font-weight:700}
-.pp-carries{font-family:'Courier Prime',monospace;font-size:5pt;color:#8b1a1a;margin-top:0.3mm;line-height:1.15}
-.pp-score-cell{border-left:0.5pt solid #999}
-.pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:6.5pt;font-weight:700;color:#1a3a2a;padding:1mm 1.2mm;text-transform:uppercase;letter-spacing:0.4px;border-top:1pt solid #1a3a2a;border-bottom:none}
-.pp-footer{margin-top:1.5mm;display:flex;justify-content:space-between;align-items:flex-end}
+.pp-carries{font-family:'Courier Prime',monospace;font-size:3.8pt;color:#8b1a1a;margin-top:0.2mm;line-height:1.1}
+.pp-score-cell{border-left:0.3pt solid #999}
+.pp-table tfoot td{background:#f0e8d0;font-family:'Courier Prime',monospace;font-size:5pt;font-weight:700;color:#1a3a2a;padding:0.7mm 0.8mm;text-transform:uppercase;letter-spacing:0.25px;border-top:0.7pt solid #1a3a2a;border-bottom:none}
+.pp-footer{margin-top:1mm;display:flex;justify-content:space-between;align-items:flex-end}
 .pp-notes{flex:1}
-.pp-notes-lbl{font-family:'Courier Prime',monospace;font-size:5.5pt;letter-spacing:0.8px;color:#666;text-transform:uppercase;margin-bottom:0.7mm}
-.pp-notes-line{border-bottom:0.3pt solid #999;height:3mm;margin-bottom:1mm}
-.pp-pagenum{font-family:'Courier Prime',monospace;font-size:5.5pt;color:#999;letter-spacing:0.8px;margin-left:5mm;white-space:nowrap}
+.pp-notes-lbl{font-family:'Courier Prime',monospace;font-size:4pt;letter-spacing:0.5px;color:#666;text-transform:uppercase;margin-bottom:0.4mm}
+.pp-notes-line{border-bottom:0.2pt solid #999;height:2mm;margin-bottom:0.6mm}
+.pp-pagenum{font-family:'Courier Prime',monospace;font-size:4pt;color:#999;letter-spacing:0.5px;margin-left:3mm;white-space:nowrap}
 
-/* PRINT NOTES PAGE */
-.print-page-notes .pp-header{border-bottom:1.2pt solid #1a3a2a}
-.ppn-body{flex:1;padding-top:2mm;column-count:2;column-gap:5mm;column-rule:0.3pt solid #d0c8a8}
-.ppn-body p{font-size:7.5pt;line-height:1.45;color:#222;margin:0 0 2.2mm;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+/* PRINT NOTES PAGE (A6) */
+.print-page-notes .pp-header{border-bottom:0.8pt solid #1a3a2a}
+.ppn-body{flex:1;padding-top:1mm;column-count:1;column-gap:0;column-rule:none}
+.ppn-body p{font-size:5.5pt;line-height:1.32;color:#222;margin:0 0 1.2mm;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
 .ppn-body p b{color:#1a3a2a;font-weight:700}
-.ppn-pullquote{font-style:italic;font-size:7pt;line-height:1.35;color:#5a4a08;border-left:1.2pt solid #c9a84c;padding:1mm 0 1mm 2.5mm;margin:1.5mm 0;break-inside:avoid;page-break-inside:avoid}
-.ppn-facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;margin-top:2mm;padding:2mm;background:#f5f0e0;border-top:0.5pt solid #c4b990;border-bottom:0.5pt solid #c4b990}
-.ppn-fact-lbl{font-family:'Courier Prime',monospace;font-size:5pt;letter-spacing:0.8px;color:#8a6f1c;text-transform:uppercase;margin-bottom:0.5mm}
-.ppn-fact-val{font-family:'Playfair Display',serif;font-size:9pt;color:#1a3a2a;line-height:1.15;margin-bottom:0.4mm;font-weight:400}
-.ppn-fact-sub{font-size:6pt;color:#444;font-style:italic;line-height:1.2}
+.ppn-pullquote{font-style:italic;font-size:5pt;line-height:1.25;color:#5a4a08;border-left:0.7pt solid #c9a84c;padding:0.5mm 0 0.5mm 1.5mm;margin:1mm 0;break-inside:avoid;page-break-inside:avoid}
+.ppn-facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1mm;margin-top:1mm;padding:1mm;background:#f5f0e0;border-top:0.3pt solid #c4b990;border-bottom:0.3pt solid #c4b990}
+.ppn-fact-lbl{font-family:'Courier Prime',monospace;font-size:3.8pt;letter-spacing:0.4px;color:#8a6f1c;text-transform:uppercase;margin-bottom:0.2mm}
+.ppn-fact-val{font-family:'Playfair Display',serif;font-size:6.5pt;color:#1a3a2a;line-height:1.05;margin-bottom:0.2mm;font-weight:400}
+.ppn-fact-sub{font-size:4.2pt;color:#444;font-style:italic;line-height:1.15}
+
+/* PRINT COVER PAGE (A6) */
+.print-page-cover{background:#1a3a2a;color:#f5f0e8;position:relative;overflow:hidden;padding:0;margin:0;width:95mm;min-height:138mm;display:block}
+.print-page-cover::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 6mm,rgba(255,255,255,.025) 6mm,rgba(255,255,255,.025) 6.2mm);pointer-events:none}
+.ppc-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:138mm;padding:8mm 8mm;text-align:center}
+.ppc-eyebrow{font-family:'Courier Prime',monospace;font-size:6pt;letter-spacing:2.2px;color:#c9a84c;text-transform:uppercase;margin-bottom:5mm}
+.ppc-title{font-family:'Playfair Display',serif;font-size:22pt;font-weight:400;line-height:1.05;color:#f5f0e8;margin:0 0 4mm;letter-spacing:0.1mm}
+.ppc-divider{width:18mm;height:0.5pt;background:#c9a84c;margin:0 auto 4mm;opacity:.85}
+.ppc-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:7.5pt;color:#e8c97a;opacity:.85;margin-bottom:8mm;letter-spacing:0.2px}
+.ppc-days{list-style:none;padding:0;margin:0 0 9mm;display:flex;flex-direction:column;gap:2.2mm;width:62mm}
+.ppc-day{display:flex;justify-content:space-between;align-items:baseline;border:0.5pt solid #c9a84c;padding:1.7mm 3mm;border-radius:0.5mm;background:rgba(255,255,255,.03)}
+.ppc-day-num{font-family:'Courier Prime',monospace;font-size:6pt;letter-spacing:1.5px;color:#c9a84c;text-transform:uppercase;opacity:.9}
+.ppc-day-name{font-family:'Playfair Display',serif;font-size:8pt;color:#f5f0e8;font-weight:400}
+.ppc-foot{margin-top:auto;padding-top:6mm;border-top:0.3pt solid rgba(201,168,76,.3);width:60mm}
+.ppc-foot-row{font-family:'Courier Prime',monospace;font-size:5pt;letter-spacing:1px;color:#e8c97a;opacity:.65;text-transform:uppercase;line-height:1.6}
+
+/* Cover should NOT inherit the .pp-* footer or other layouts */
+.print-page-cover .pp-header,
+.print-page-cover .pp-footer{display:none}
 </style>
 </head>
 <body>
@@ -294,6 +330,11 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
       <div class="ch-chip"><span class="ch-chip-label">Turnberry</span><span class="ch-chip-val" id="ch-turnberry">—</span></div>
       <div class="ch-chip"><span class="ch-chip-label">W. Gailes</span><span class="ch-chip-val" id="ch-western">—</span></div>
     </div>
+    <div class="unit-toggle" id="unitToggle">
+      <button class="wind-btn active" data-unit="y">Yds</button>
+      <button class="wind-btn" data-unit="m">M</button>
+    </div>
+    <button class="print-btn" id="printBtn" title="Print A6 notebook pages">⎙ Print</button>
   </div>
   <div class="hcp-row hcp-row-2">
     <span class="hcp-label">Wind</span>
@@ -313,11 +354,6 @@ footer{background:var(--green);color:var(--cream);text-align:center;padding:22px
       <span class="wk-item"><span class="meta-wind wind-hurt">↓</span><span class="wk-lbl">Into</span></span>
       <span class="wk-item"><span class="meta-wind wind-none">·</span><span class="wk-lbl">Calm</span></span>
     </div>
-    <div class="unit-toggle" id="unitToggle">
-      <button class="wind-btn active" data-unit="y">Yds</button>
-      <button class="wind-btn" data-unit="m">M</button>
-    </div>
-    <button class="print-btn" id="printBtn" title="Print A5 notebook pages">⎙ Print</button>
   </div>
 </div>
 
@@ -1404,8 +1440,13 @@ function renderGreenBlock(cid, num){
 
   return `
   <div class="green-block">
-    <div class="gb-rail"><span class="gb-rail-icon">⚐</span><span class="gb-rail-label">Green</span></div>
-    <div class="gb-svg">${makeGreenSVG(g)}</div>
+    <div class="gb-diagram">
+      <div class="gb-diagram-head">
+        <span class="gb-diagram-icon">⚐</span>
+        <span class="gb-diagram-label">Green</span>
+      </div>
+      <div class="gb-svg">${makeGreenSVG(g)}</div>
+    </div>
     <div class="gb-body">
       ${metaRow}
       <div class="gb-chips">${chips}</div>
@@ -1435,11 +1476,15 @@ function renderHole(h, cid) {
   return `
   <div class="hole-pair">
     <div class="hole-card" id="${cid}-h${h.num}">
-      <div class="hc-num">${h.num}</div>
-      <div class="hc-svg">${makeSVG(h)}</div>
+      <div class="hc-diagram">
+        <div class="hc-diagram-head">
+          <span class="hc-num">${h.num}</span>
+          <span class="hc-par-tag">Par ${h.par}</span>
+        </div>
+        <div class="hc-svg">${makeSVG(h)}</div>
+      </div>
       <div class="hc-body">
         <div class="hc-meta">
-          <span class="meta-par">P${h.par}</span>
           <span class="meta-yds">${fmtDist(h.yds)}</span>
           <span class="meta-si">SI ${h.si}</span>
           <span class="meta-shots shots-0" id="sh-${cid}-${h.num}">—</span>
@@ -1700,7 +1745,7 @@ const COURSE_NOTES = [
 ];
 
 // ─── COURSE NOTES (used by screen section AND print pages) ──────────────────── END
-// ─── PRINT VIEW (A5 notebook pages) ───────────────────────────────────────────
+// ─── PRINT VIEW (A6 notebook pages) ───────────────────────────────────────────
 function renderPrintPage(course, dayNum, nineLabel, holes, pageIdx, totalPages) {
   const totalYds = holes.reduce((a,h) => a + h.yds, 0);
   const totalPar = holes.reduce((a,h) => a + h.par, 0);
@@ -1849,18 +1894,39 @@ function renderPrintNotesPage(note, dayNum, pageIdx, totalPages) {
     </div>`;
 }
 
+function renderPrintCoverPage(totalPages) {
+  const dayItems = COURSES.map((c, idx) => {
+    return `<li class="ppc-day"><span class="ppc-day-num">Day ${idx+1}</span><span class="ppc-day-name">${c.name}</span></li>`;
+  }).join('');
+
+  return `
+    <div class="print-page print-page-cover">
+      <div class="ppc-inner">
+        <div class="ppc-eyebrow">Ayrshire Coast · Shot Saver</div>
+        <h1 class="ppc-title">The Ayrshire<br>Quartet</h1>
+        <div class="ppc-divider"></div>
+        <div class="ppc-sub">Hole-by-hole strategic guide</div>
+        <ul class="ppc-days">${dayItems}</ul>
+        <div class="ppc-foot">
+          <div class="ppc-foot-row">Medal &amp; white tees</div>
+          <div class="ppc-foot-row">SI values indicative — verify on the day</div>
+        </div>
+      </div>
+    </div>`;
+}
+
 function buildPrintView() {
   const pv = document.getElementById('printView');
   if (!pv) return;
   const pages = [];
-  // 2 hole pages per course + 1 notes page per course = 12 pages total
-  const totalPages = COURSES.length * 3;
+  // 1 cover + (2 hole + 1 notes) per course = 13 pages total
+  const totalPages = 1 + COURSES.length * 3;
+  pages.push(renderPrintCoverPage(totalPages));
   COURSES.forEach((c, idx) => {
     const front = c.holes.slice(0, 9);
     const back  = c.holes.slice(9, 18);
     pages.push(renderPrintPage(c, idx + 1, 'Front Nine · Holes 1–9', front, pages.length + 1, totalPages));
     pages.push(renderPrintPage(c, idx + 1, 'Back Nine · Holes 10–18', back, pages.length + 1, totalPages));
-    // Find the matching notes by course id
     const note = COURSE_NOTES.find(n => n.id === c.id);
     if (note) {
       pages.push(renderPrintNotesPage(note, idx + 1, pages.length + 1, totalPages));
@@ -1953,7 +2019,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Print button — build A5 print pages and open browser print dialog
+  // Print button — build A6 print pages and open browser print dialog
   const printBtn = document.getElementById('printBtn');
   if (printBtn) {
     printBtn.addEventListener('click', () => {
